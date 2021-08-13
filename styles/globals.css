@@ -1,16 +1,797 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+/* General theme styling */
+
+body{
+  background-color:#f8f9fa;
+}
+h1{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height:1.2;
+  font-size:2.8rem;
+  padding-bottom:20px;
 }
 
-a {
-  color: inherit;
+h2, h3, h4, h5{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size:2.2rem;
+  margin-bottom:25px;
+  padding-bottom:5px;
+}
+
+p{
+  font-family: 'Poppins', sans-serif;
+  font-size:16px;
+  line-height: 1.5;
+  font-weight:300;
+  color:#1a1a1a;
+}
+
+@media screen and (min-width: 829px) {
+  p{
+    font-size: 18px;
+  }
+}
+
+li{
+  font-family: 'Poppins', sans-serif;
+  font-size:15px;
+  font-weight:300;
+  line-height:1.6;
+  color:#1a1a1a;
+  padding-bottom:10px
+}
+
+label, input, textarea{
+  display:block;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  padding-top:10px;
+}
+
+button{
+  border:none;
+}
+
+button:focus {
+  outline:#b40202;
+}
+
+.hwContent{
+padding-right:5%;
+padding-top:20px;
+}
+
+.text-shadow{
+  -webkit-box-shadow: 0px 10px 18px -16px rgba(26,26,26,1);
+  -moz-box-shadow: 0px 10px 18px -16px rgba(26,26,26,1);
+  box-shadow: 0px 10px 18px -16px rgba(26,26,26,1);
+}
+
+.bottom-shadow{
+  -webkit-box-shadow: 0px 16px 13px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 16px 13px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 16px 13px -16px rgba(0,0,0,0.75);
+}
+
+.flex-container{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 829px){
+  .flex-container{
+    flex-direction: row;
+  }
+}
+
+.navbar{
+  max-height:80px;
+  -webkit-box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
+box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
+}
+
+/* ----------------------------------------------  Animation ----------------------------------------------*/
+
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+
+
+/* ---------------------------------------------- Colors ---------------------------------------------- */
+
+.light{
+  color:#FDFFFC;
+}
+.purple{
+  color: #291528;
+}
+.bg-red{
+  background-color: #ff1511;
+}
+.bg-dred{
+  background-color: #b40202;
+}
+.bg-dark{
+  background-color: #1a1a1a;
+}
+.bg-purple{
+  background-color: #291528;
+}
+.bg-light{
+  background-color: #f8f9fa;
+}
+.transparent{
+  background-color:rgba(255,255,255,0);
+}
+
+/* ---------------------------------------------- Block elements ----------------------------------------------*/
+
+.btn{
+  background-color:#291528;
+  padding:5px 10px;
+  font-family: 'Poppins',sans-serif;
+  font-size:1.5rem;
+  font-weight:500;
+  text-transform:uppercase;
+  border-radius: 0 0 0 10px;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(26,26,26,0.94);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(26,26,26,0.94);
+  box-shadow: 5px 5px 5px 0px rgba(26,26,26,0.94);
+}
+
+.btn:hover{
+  color:#ff1511;
+}
+
+.mobile-section{
+  padding:65px 35px;
+}
+
+.curved-bottom{
+  border-radius: 0 0 0 50px;
+}
+
+
+
+/* ----------------------------------------------  Navbar ----------------------------------------------*/
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  /* width: 0; 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #1a1a1a;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #FDFFFC;
+  display: block;
+  transition: 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #ff1511;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/*---------------------------------------------- Homepage ----------------------------------------------*/
+/*---------------------------------------------- hero section---------------------------------------------- */
+.hamburger{
+  width:30px;
+  margin-right:15px;
+}
+
+@media screen and (max-device-width:600px){
+  .hamburger{
+    width:50px;
+    height:30px;
+  }
+}
+
+.hero-bg{
+  margin:0;
+  padding:0;
+}
+
+.hero{
+  min-height:500px;
+  background-image: url("/images/online-pt-in-gym.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  border-radius: 0 0 0 50px;
+  margin-right:25%;
+  padding:40px 0 15px 25px;
+  overflow: hidden;
+}
+
+.hero-header{
+  font-weight:700;
+  size:38px;
+}
+
+.hero-h2{
+  font-weight:500;
+}
+
+.hero-btn{
+  margin-top:180px;
+}
+
+/*---------------------------------------------- hero section Desktop---------------------------------------------- */
+@media only screen and (min-width: 829px){
+  .hero{
+    min-height:650px;
+    padding-left:7%;
+    width:100%;
+    border-radius: 0;
+  }
+  .hero-header{
+    font-weight:700;
+    font-size: 7vw;
+  }
+  .hero-h2{
+    font-weight:500;
+  }
+  .hero-btn{
+    margin-top:0;
+    position:absolute;
+    top:600px;
+  }
+}
+
+/* ----------------------------------------------Promise section---------------------------------------------- */
+
+.promise-heading{
+  display:inline-block;
+}
+
+
+/* ----------------------------------------------Promise section Desktop---------------------------------------------- */
+
+@media only screen and (min-width: 829px){
+  #promise-section{
+    text-align: left;
+    order:3;
+    width:45%;
+    margin:0 0 20px auto;
+    padding: 0;
+    background-color: #f8f9fa;
+
+  }.promise-wrapper{
+    background-color:#b40202;
+    padding:70px 60px 60px;
+    border-radius: 0 0 0 50px;
+    overflow: hidden;
+    margin-right: 0;
+    margin-left: auto;
+    -webkit-box-shadow: 7px 5px 15px -4px rgba(26,26,26,1);
+    -moz-box-shadow: 7px 5px 15px -4px rgba(26,26,26,1);
+    box-shadow: 7px 5px 15px -4px rgba(26,26,26,1);
+  }
+}
+
+/* ---------------------------------------------- Slider section ---------------------------------------------- */
+
+.carousel-inner{
+  margin: auto;
+  max-width: 500px;
+}
+
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23B40202' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+  margin-bottom:100px;
+}
+
+.carousel-control-next-icon{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23B40202' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  margin-bottom:100px;
+}
+
+.carousel-caption{
+  position:relative;
+  display:flex;
+  height:165px;
+  right:auto;
+  left:auto;
+  margin:0 5%;
+  top:0;
+  padding:20px ;
+  background-color: rgba(180,2,2,0.8);
+  box-shadow: inset 56px 95px 17px -95px rgba(0,0,0,0.75);
+  -webkit-box-shadow: inset 56px 95px 17px -95px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 56px 95px 17px -95px rgba(0,0,0,0.75);
+  border-radius: 0 0 10px 10px ;
+}
+
+.caption-text{
+    color: #fdfffc;
+    font-weight:300;
+    font-style: italic;
+    font-size: 16px;
+    margin:auto auto;
+}
+
+@media only screen and (max-width: 829px){
+  .caption-text{
+    font-size: 14px;
+}
+}
+
+
+.ruin{
+  margin-top:50px;
+}
+
+.btn-container{
+  text-align: right;
+}
+.ruin-btn{
+  margin:50px 0;
+}
+
+.carousel-inner{
+  overflow:visible;
+}
+
+/* ---------------------------------------------- Slider section Desktop ---------------------------------------------- */
+
+@media only screen and (min-width: 829px){
+  #proven-results{
+    max-width: 45%;
+    margin:70px auto 30px 5%;
+    order:2;
+
+  } #proven-results .mobile-section{
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 35px;
+  }
+}
+
+
+/* ---------------------------------------------- are you in ---------------------------------------------- */
+@media only screen and (min-width: 829px){
+  #are-you-in{
+    order:6;
+    margin:-100px 0 100px 5%;
+    padding:0;
+    width: 40%;
+    background-color:#f8f9fa;
+  }
+}
+
+
+
+
+
+
+/* ---------------------------------------------- how it works ---------------------------------------------- */
+
+
+.membership-btn{
+  margin:50px 0 20px 0;
+}
+
+/* ---------------------------------------------- how it works ---------------------------------------------- */
+
+@media only screen and (min-width: 829px){
+  #how-it-works{
+    width: 45%;
+    order:3;
+    align-items: flex-start;
+    margin: 70px 0 150px 0;
+    padding:0;
+    background-color: #f8f9fa;
+    box-shadow: none;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+  }.hiw-wrapper{
+    background-color: #b40202;
+    left:0;
+    padding:60px;
+    margin-right:20px;
+    border-radius: 0 50px 50px 0;
+    -webkit-box-shadow: 29px 29px 12px -29px rgba(8,8,8,1);
+    -moz-box-shadow: 29px 29px 12px -29px rgba(8,8,8,1);
+    box-shadow: 29px 29px 12px -29px rgba(8,8,8,0.8);
+  }
+}
+
+
+
+/* ---------------------------------------------- Your New PTs ---------------------------------------------- */
+
+.your-online-pt{
+  width:100%;
+}
+
+.trainers{
+  margin:40px 0;
+  padding:0;
+  width:100%;
+}
+
+
+.alex{
+  margin-top:100px;
+  margin-bottom: 50px;
+}
+/* ---------------------------------------------- Your New PTs Desktop ---------------------------------------------- */
+@media only screen and (min-width: 829px){
+  #your-new-pts{
+    max-width: 45%;
+    margin:0 5% 0px auto;
+    order:4;
+    background-color: #f8f9fa;
+
+  }
+  .ruin{
+    margin-top: 0;
+  }
+}
+
+
+
+/* ---------------------------------------------- Contact Section ----------------------------------------------*/
+#got-a-question{
+  -webkit-box-shadow: -2px -28px 29px -34px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -28px 29px -34px rgba(0,0,0,0.75);
+box-shadow: -2px -28px 29px -34px rgba(0,0,0,0.75);
+}
+
+@media only screen and (min-width:  829px){
+  .form-container{
+    width:100%;
+}
+  .contact-form{
+    max-width:480px;
+    margin:auto;
+    text-align: left;
+  }
+
+  #got-a-question{
+    text-align: center;
+    order:7;
+  }
+}
+
+input[name="g-recaptcha-response"] {
+  display:none;
+}
+
+/* ----------------------------------------------Styling for the signup page ---------------------------------------------- */
+.signupBg{
+  background-image: url("/images/background-image.png");
+  background-size: cover;
+  background-position: bottom;
+  padding:0 5% 0 5%;
+}
+
+.fullHeight{
+  height:100vh;
+}
+
+.signupheading{
+  padding-top:50px;
+}
+
+.logoImg{
+  max-width:60px;
+  height:auto;
+  padding:10;
+  margin:0;
+}
+.af-form{
+  margin:50px 0 0 0!important;
+}
+
+#af-form-33474039{
+  box-shadow: none!important;
+}
+
+/* ----------------------------------------------Styling for the membership details page ---------------------------------------------- */
+
+.graphic{
+  width:100%;
+  margin:50px 0;
+
+}
+
+
+/* ----------------------------------------------Styling for the about us page ---------------------------------------------- */
+
+.meet{
+  color:white;
+}
+
+ul .btn{
+  margin:50px 15px 20px 0;
+}
+
+li a:hover{
+  color:red;
+}
+
+button a:hover{
+  color:red;
+}
+
+
+li.active{
+background-color:rgba(41,21,40,0.7);
+box-shadow: none;
+}
+li.active a:hover{
+  color:white;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+@media only screen and (max-width:  829px){
+  h1:not(.hero-header) {
+    font-size: 2.2rem;
+  }
+  ul .btn{
+    margin:20px 15 20px 0;
+    }
+}
+
+.us{
+  margin:0 0 50px 0;
+  width:100%;
+}
+
+.inline-btn{
+  display: inline-block;
+}
+
+.inline-btn .btn{
+  margin:0 30px 30px 0;
+}
+
+.about-content{
+  margin-bottom:50px;
+}
+
+@media only screen and (min-width: 992px){
+  .about-content{
+    max-height: 450px;
+      overflow: scroll;
+  }
+}
+
+
+/* ----------------------------------------------Styling for the check in page ---------------------------------------------- */
+
+
+.checkInForm{
+  max-width: 700px;
+  margin-top: 40px;
+
+}
+
+.formLabel{
+  padding-bottom: 20px;
+}
+
+.formInput{
+  margin-top:15px;
+}
+
+.formInput:focus::placeholder {
+  color: transparent;
+}
+
+
+
+.comments{
+  height:150px;
+ }
+ 
+ @media only screen and (min-width: 720px){
+   .comments{
+     margin-top:-30px;
+   }
+ }
+ 
+ 
+ .radioQuote{
+   border:none;
+   margin: 1em 0;
+   padding: 0.5em 10px;
+   font-size: 17px;
+   font-style: italic;
+   background-color: rgba(0,0,0,0);
+   width:100%;
+   color:dimgray;
+ }
+
+ .radio-div{
+  display:flex;
+  align-items: flex-start;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: inline;
+  position: relative;
+  margin: 20px 0 70px 0;
+  cursor: pointer;
+  font-size: 22px;
+  width:100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+label span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.greenCheckmark{
+  background-color: #57be6a;
+}
+.amberCheckmark{
+  background-color: #e08031;
+}
+.redCheckmark{
+  background-color: #db413d;
+}
+
+/* On mouse-over, add a lighter background color */
+.container:hover input ~ .greenCheckmark {
+  background-color: #a8ddb2;
+}
+.container:hover input ~ .amberCheckmark {
+  background-color: #f0c19a;
+}
+.container:hover input ~ .redCheckmark {
+  background-color: #eda19f;
+}
+
+
+/* When the checkbox is checked, add a background */
+.container input:checked ~ .greenCheckmark {
+  background-color: #a8ddb2;
+}
+.container input:checked ~ .amberCheckmark {
+  background-color: #f0c19a;
+}
+.container input:checked ~ .redCheckmark {
+  background-color: #eda19f;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.greenCheckmark:after {
+  content: "✓";
+  position: absolute;
+  display: none;
+}
+.amberCheckmark:after {
+  content: "✓";
+  position: absolute;
+  display: none;
+}
+.redCheckmark:after {
+  content: "✓";
+  position: absolute;
+  display: none;
+}
+
+
+/* Show the checkmark when checked */
+.container input:checked ~ .greenCheckmark:after {
+  display: block;
+}
+.container input:checked ~ .amberCheckmark:after {
+  display: block;
+}
+.container input:checked ~ .redCheckmark:after {
+  display: block;
+}
+
+
+/* Style the checkmark/indicator */
+.container .greenCheckmark:after {
+  left: 25px;
+  top: 11px;
+  font-size: 40px;
+  color:white;
+}
+.container .amberCheckmark:after {
+  left: 25px;
+  top: 11px;
+  font-size: 40px;
+  color:white;
+}
+.container .redCheckmark:after {
+  left: 25px;
+  top: 11px;
+  font-size: 40px;
+  color:white;
+}
+
+.googleForm{
+  padding:20px 0;
+}
+
+.colorLabel{
+  padding-top:20px;
+}
+
+
+/* ----------------------------------------------Styling for the transformations details page ---------------------------------------------- */
+
+
+.transformationImage {
+  width: 100%;
+}
+
+.transformationWrapper {
+  background-color:#EDEDED;
+  border-radius: 0 0 30px 0;
+  margin-bottom: 30px; 
+  -webkit-box-shadow: -3px 6px 10px -7px #1A1A1A; 
+  box-shadow: -3px 6px 10px -7px #1A1A1A;
+}
+
+.transformationName {
+  font-weight: 700;
+  padding: 20px 15px 0 15px;
+}
+
+.transformationCaption {
+  padding: 0 15px 30px 15px;
+}
+
+.standFirst {
+  margin-bottom: 40px;
 }
