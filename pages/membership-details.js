@@ -15,11 +15,11 @@ export default function MembershipDetails() {
           crossorigin="anonymous"
         />
       </Head>
-      <div class="signupBg">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6 ">
-              <h1 class="signupHeading">Membership Details</h1>
+      <div className="signupBg">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-6 ">
+              <h1 className="signupHeading">Membership Details</h1>
               <p>
                 Purchase a membership with Fitt AF to receive an online personal
                 training service that includes:
@@ -52,16 +52,16 @@ export default function MembershipDetails() {
               </ul>
 
               <a href="/start">
-                <button class="btn grow light" type="button" name="button">
+                <button className="btn grow light" type="button" name="button">
                   Buy Membership
                 </button>
               </a>
             </div>
 
-            <div class="col-md-6 my-auto imgDiv">
+            <div className="col-md-6 my-auto imgDiv">
               <img
                 src="/images/home/app-icons.png"
-                class="graphic"
+                className="graphic"
                 alt="Graphic showing the online personal traininers as well as some features of the fitness app."
               />
             </div>

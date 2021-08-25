@@ -15,35 +15,35 @@ export default function AboutUs() {
           crossorigin="anonymous"
         />
       </Head>
-      <div class="signupBg">
-        <h1 class="signupHeading">Your New PTs</h1>
+      <div className="signupBg">
+        <h1 className="signupHeading">Your New PTs</h1>
 
-        <ul class="nav nav-pills">
-          <li class="active btn" id="frankie-btn">
-            <a data-toggle="pill" href="#frankie" class="meet">
+        <ul className="nav nav-pills">
+          <li className="active btn" id="frankie-btn">
+            <a data-toggle="pill" href="#frankie" className="meet">
               Meet Frankie
             </a>
           </li>
-          <li class="btn grow" id="alex-btn">
-            <a data-toggle="pill" href="#alex" class="meet">
+          <li className="btn grow" id="alex-btn">
+            <a data-toggle="pill" href="#alex" className="meet">
               Meet Alex
             </a>
           </li>
         </ul>
 
-        <div class="tab-content">
-          <div id="frankie" class="tab-pane active">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6 ">
+        <div className="tab-content">
+          <div id="frankie" className="tab-pane active">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-6 ">
                   <img
-                    class="curved-bottom bottom-shadow us"
+                    className="curved-bottom bottom-shadow us"
                     src="/images/f-and-a/frankie-training-outdoors.jpg"
                     alt="Image of online personal trainer Frankie excersising outside."
                   />
                 </div>
-                <div class="col-lg-6 scrollable">
-                  <div class="about-content">
+                <div className="col-lg-6 scrollable">
+                  <div className="about-content">
                     <p> I’m Frankie and I am one half of the Fitt AF team</p>
                     <p>
                       I grew up in Cheltenham and met this crazy Cypriot guy in
@@ -93,13 +93,13 @@ export default function AboutUs() {
                       in.
                     </p>
                   </div>
-                  <a href="/membership-details" class="inline-btn">
-                    <button class="btn grow light" type="button">
+                  <a href="/membership-details" className="inline-btn">
+                    <button className="btn grow light" type="button">
                       MEMBERSHIP DETAILS
                     </button>
                   </a>
-                  <a href="/contact" class="inline-btn">
-                    <button type="button" class="btn light grow">
+                  <a href="/contact" className="inline-btn">
+                    <button type="button" className="btn light grow">
                       Contact Us
                     </button>
                   </a>
@@ -107,18 +107,18 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-          <div id="alex" class="tab-pane fade">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6">
+          <div id="alex" className="tab-pane fade">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-6">
                   <img
-                    class="bottom-shadow curved-bottom us"
+                    className="bottom-shadow curved-bottom us"
                     src="/images/f-and-a/alex-coaching-in-gym.jpg"
                     alt="Image of online fitness coach Alex coaching in a gym."
                   />
                 </div>
-                <div class="col-lg-6 scrollable">
-                  <div class="about-content">
+                <div className="col-lg-6 scrollable">
+                  <div className="about-content">
                     <p>Half Cypriot, half English and entirely FITT AF.</p>
                     <p>
                       Hey, I’m Alex, an enthusiastic and caring coach who has a
@@ -233,13 +233,13 @@ export default function AboutUs() {
                     <p>I’m ready if you are...</p>
                   </div>
 
-                  <a href="/membership-details" class="inline-btn">
-                    <button class="btn grow light" type="button">
+                  <a href="/membership-details" className="inline-btn">
+                    <button className="btn grow light" type="button">
                       MEMBERSHIP DETAILS
                     </button>
                   </a>
-                  <a href="/contact" class="inline-btn">
-                    <button type="button" class="btn light grow">
+                  <a href="/contact" className="inline-btn">
+                    <button type="button" className="btn light grow">
                       Contact Us
                     </button>
                   </a>

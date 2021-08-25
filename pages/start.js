@@ -14,13 +14,14 @@ export default function Start() {
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous"
         />
+        
       </Head>
 
-      <div class="signupBg">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6 order-2 order-md-1">
-              <h1 class="signupHeading">Let's Go</h1>
+      <div className="signupBg">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-6 order-2 order-md-1">
+              <h1 className="signupHeading">Let's Go</h1>
               <p>
                 Fill in your details below and we'll be in touch to get you
                 signed up!
@@ -35,12 +36,12 @@ export default function Start() {
           <input type="tel" name="contactNumber" required />
           <label for="goal">Number one goal</label>
           <textarea name="goal" rows="2" cols="80"></textarea>
-          <button type="submit" name="button" class="light grow btn">SEND</button>
+          <button type="submit" name="button" className="light grow btn">SEND</button>
         </form> */}
               </div>
             </div>
 
-            <div class="col-md-6 order-md-2 my-auto imgDiv"></div>
+            <div className="col-md-6 order-md-2 my-auto imgDiv"></div>
           </div>
         </div>
       </div>
