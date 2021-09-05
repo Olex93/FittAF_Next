@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function contact() {
+export default function Contact() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [goal, setGoal] = useState("");
@@ -49,16 +49,16 @@ export default function contact() {
   };
 
   return (
-    <div class="signupBg">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 order-2 order-md-1">
+    <div className="signupBg">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6 order-2 order-md-1">
             {messageSent && (
               <>
                 <h1 className="signupHeading">Your message has been sent</h1>
                 <p>
-                  Thanks for reaching out, we can't wait to find out how we can
-                  help. We'll be in touch soon!
+                  Thanks for reaching out, we can&apos;t wait to find out how we can
+                  help. We&apos;ll be in touch soon!
                 </p>
               </>
             )}
@@ -66,7 +66,7 @@ export default function contact() {
               <>
                 <h1 className="signupHeading">Uh oh</h1>
                 <p>
-                  We've had a bit of a technical issue. Please contact us
+                  We&apos;ve had a bit of a technical issue. Please contact us
                   directly on{" "}
                   <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>
                   .
@@ -75,7 +75,7 @@ export default function contact() {
             )}
             {!messageSent && !errorMessage && (
               <>
-                <h1 class="signupHeading">Ask us a question</h1>
+                <h1 className="signupHeading">Ask us a question</h1>
                 <p>
                   Send us a message using the form below and we will be in touch
                   as soon as possible!
@@ -83,7 +83,7 @@ export default function contact() {
 
                 <div>
                   <form action="/" method="post">
-                    <label for="name">Name*</label>
+                    <label htmlFor="name">Name*</label>
                     <input
                       type="text"
                       name="name"
@@ -91,7 +91,7 @@ export default function contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
-                    <label for="email">Email*</label>
+                    <label htmlFor="email">Email*</label>
                     <input
                       type="email"
                       name="email"
@@ -99,7 +99,7 @@ export default function contact() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
-                    <label for="contactNumber">Contact Number*</label>
+                    <label htmlFor="contactNumber">Contact Number*</label>
                     <input
                       type="tel"
                       name="contactNumber"
@@ -107,7 +107,7 @@ export default function contact() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
-                    <label for="question">Your Question</label>
+                    <label htmlFor="question">Your Question</label>
                     <textarea
                       name="question"
                       rows="4"
@@ -118,7 +118,7 @@ export default function contact() {
                     <button
                       type="submit"
                       name="button"
-                      class="light grow btn"
+                      className="light grow btn"
                       onClick={(e) => sendMessage(e)}
                     >
                       SEND
@@ -129,7 +129,7 @@ export default function contact() {
             )}
           </div>
 
-          <div class="col-md-6 order-md-2 my-auto imgDiv"></div>
+          <div className="col-md-6 order-md-2 my-auto imgDiv"></div>
         </div>
       </div>
     </div>

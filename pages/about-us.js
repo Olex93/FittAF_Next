@@ -1,19 +1,21 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutUs() {
-  const [frankieButton, setFrankieButton] = React.useState('active')
-  const [alexButton, setAlexButton] = React.useState('grow')
+  const [frankieButton, setFrankieButton] = React.useState("active");
+  const [alexButton, setAlexButton] = React.useState("grow");
 
   const changeActiveState = () => {
-    if (frankieButton === 'active') {
-      setFrankieButton('grow')
-      setAlexButton('active')
-    } else if (frankieButton === 'grow') {
-      setFrankieButton('active')
-      setAlexButton('grow')
-    } 
-  }
+    if (frankieButton === "active") {
+      setFrankieButton("grow");
+      setAlexButton("active");
+    } else if (frankieButton === "grow") {
+      setFrankieButton("active");
+      setAlexButton("grow");
+    }
+  };
 
   return (
     <>
@@ -25,12 +27,20 @@ export default function AboutUs() {
         <h1 className="signupHeading">Your New PTs</h1>
 
         <ul className="nav nav-pills">
-          <li onClick={changeActiveState} className={'btn ' + frankieButton} id="frankie-btn">
+          <li
+            onClick={changeActiveState}
+            className={"btn " + frankieButton}
+            id="frankie-btn"
+          >
             <a data-toggle="pill" href="#frankie" className="meet">
               Meet Frankie
             </a>
           </li>
-          <li onClick={changeActiveState} className={'btn ' + alexButton} id="alex-btn">
+          <li
+            onClick={changeActiveState}
+            className={"btn " + alexButton}
+            id="alex-btn"
+          >
             <a data-toggle="pill" href="#alex" className="meet">
               Meet Alex
             </a>
@@ -42,7 +52,7 @@ export default function AboutUs() {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-6 ">
-                  <img
+                  <Image
                     className="curved-bottom bottom-shadow us"
                     src="/images/f-and-a/frankie-training-outdoors.jpg"
                     alt="Image of online personal trainer Frankie excersising outside."
@@ -99,16 +109,20 @@ export default function AboutUs() {
                       in.
                     </p>
                   </div>
-                  <a href="/membership-details" className="inline-btn">
-                    <button className="btn grow light" type="button">
-                      MEMBERSHIP DETAILS
-                    </button>
-                  </a>
-                  <a href="/contact" className="inline-btn">
-                    <button type="button" className="btn light grow">
-                      Contact Us
-                    </button>
-                  </a>
+                  <Link href="/membership-details">
+                    <a className="inline-btn">
+                      <button className="btn grow light" type="button">
+                        MEMBERSHIP DETAILS
+                      </button>
+                    </a>
+                  </Link>
+                  <Link href="/contact">
+                    <a className="inline-btn">
+                      <button type="button" className="btn light grow">
+                        Contact Us
+                      </button>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -117,7 +131,7 @@ export default function AboutUs() {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-6">
-                  <img
+                  <Image
                     className="bottom-shadow curved-bottom us"
                     src="/images/f-and-a/alex-coaching-in-gym.jpg"
                     alt="Image of online fitness coach Alex coaching in a gym."
@@ -238,17 +252,20 @@ export default function AboutUs() {
                     </p>
                     <p>I’m ready if you are...</p>
                   </div>
-
-                  <a href="/membership-details" className="inline-btn">
-                    <button className="btn grow light" type="button">
-                      MEMBERSHIP DETAILS
-                    </button>
-                  </a>
-                  <a href="/contact" className="inline-btn">
-                    <button type="button" className="btn light grow">
-                      Contact Us
-                    </button>
-                  </a>
+                  <Link href="/membership-details">
+                    <a className="inline-btn">
+                      <button className="btn grow light" type="button">
+                        MEMBERSHIP DETAILS
+                      </button>
+                    </a>
+                  </Link>
+                  <Link href="/contact">
+                    <a className="inline-btn">
+                      <button type="button" className="btn light grow">
+                        Contact Us
+                      </button>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>

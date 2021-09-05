@@ -3,12 +3,12 @@ import Script from "next/script";
 
 export default function DailyMail() {
   return (
-    <div class="container-fluid signupBg">
-      <div class="row">
+    <div className="container-fluid signupBg">
+      <div className="row">
         <div className="col-12">
-          <h1 class="signupHeading">Fitt AF Daily Email</h1>
+          <h1 className="signupHeading">Fitt AF Daily Email</h1>
         </div>
-        <div class="col-md-6 order-2 order-md-1">
+        <div className="col-md-6 order-2 order-md-1">
           <p>We’ve been told we’re the only reason people open their emails.</p>
           <p>
             We can promise a laugh, fitness motivation, and the odd kick up the
@@ -16,7 +16,7 @@ export default function DailyMail() {
           </p>
           <p>Don’t take our word for it, sign up below!</p>
           <div>
-            <div class="AW-Form-33474039"></div>
+            <div className="AW-Form-33474039"></div>
             <Script id="form-script" strategy="lazyOnload">
               {`(function (d, s, id) {
               var js,

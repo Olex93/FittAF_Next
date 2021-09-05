@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function checkIn() {
+export default function CheckIn() {
   const [name, setName] = useState("");
   const [numberOfWorkouts, setNumberOfWorkouts] = useState(null);
   const [stepTarget, setStepTarget] = useState(null);
@@ -87,13 +87,13 @@ export default function checkIn() {
   };
 
   return (
-    <div class="signupBg">
+    <div className="signupBg">
       <div style={{ maxWidth: "700px" }}>
         {messageSent && (
           <>
             <h1 className="signupHeading">Thanks for checking in!</h1>
             <p>
-              We're excited to see how you've been getting on and how we can
+              We&apos;re excited to see how you&apos;ve been getting on and how we can
               continue to support you.
             </p>
           </>
@@ -102,29 +102,29 @@ export default function checkIn() {
           <>
             <h1 className="signupHeading">Uh oh</h1>
             <p>
-              We've had a bit of a technical issue. Please contact us directly
+              We&apos;ve had a bit of a technical issue. Please contact us directly
               on <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>{" "}
-              to let us know how you've been getting on.
+              to let us know how you&apos;ve been getting on.
             </p>
           </>
         )}
         {!messageSent && !errorMessage && (
           <>
-            <h1 class="signupHeading">Weekly client check in</h1>
+            <h1 className="signupHeading">Weekly client check in</h1>
             <p>
               After setting monthly goals with us over the phone it’s important
-              to stay accountable to them weekly. Let us know how you've gotten
+              to stay accountable to them weekly. Let us know how you&apos;ve gotten
               on by filling in the form below.
             </p>
             <p>
               If you have any questions about your goals please WhatsApp us.
             </p>
             <div>
-              <form class="checkInForm">
-                <label class="formLabel" for="name">
+              <form className="checkInForm">
+                <label className="formLabel" htmlFor="name">
                   Name
                   <input
-                    class="formInput"
+                    className="formInput"
                     type="text"
                     name="name"
                     value={name}
@@ -132,11 +132,11 @@ export default function checkIn() {
                     required
                   />
                 </label>
-                <label class="formLabel" for="numberOfWorkouts">
+                <label className="formLabel" htmlFor="numberOfWorkouts">
                   How many workouts have you been assigned, and how many have
                   you completed this week?
                   <input
-                    class="formInput"
+                    className="formInput"
                     type="text"
                     name="numberOfWorkouts"
                     placeholder="(Eg “3/3 I completed them all”)"
@@ -145,10 +145,10 @@ export default function checkIn() {
                     onChange={(e) => setNumberOfWorkouts(e.target.value)}
                   />
                 </label>
-                <label class="formLabel" for="stepTarget">
+                <label className="formLabel" htmlFor="stepTarget">
                   What is your step target and what did you average this week?
                   <input
-                    class="formInput"
+                    className="formInput"
                     type="text"
                     name="stepTarget"
                     placeholder="(Eg “10k target, 8k average”)"
@@ -157,11 +157,11 @@ export default function checkIn() {
                     onChange={(e) => setStepTarget(e.target.value)}
                   />
                 </label>
-                <label class="formLabel" for="nutritionTarget">
+                <label className="formLabel" htmlFor="nutritionTarget">
                   What are your nutrition targets and what numbers did you
                   average this week?
                   <input
-                    class="formInput"
+                    className="formInput"
                     type="text"
                     name="nutritionTarget"
                     placeholder="(Eg “140g protein target, and I reached it 6/7 days)"
@@ -171,7 +171,7 @@ export default function checkIn() {
                   />
                 </label>
 
-                <label class="colorLabel" for="optradio">
+                <label className="colorLabel" htmlFor="optradio">
                   Click the color that best describes your week and leave a
                   comment below so we can give you the support that you need.
                 </label>
@@ -190,13 +190,13 @@ export default function checkIn() {
                   ></div>
                 </div>
                 <textarea
-                  readonly
+                  readOnly
                   name="quote"
-                  class="radioQuote"
+                  className="radioQuote"
                   value={blockQuote}
                 ></textarea>
                 <textarea
-                  class="comments"
+                  className="comments"
                   name="comments"
                   rows="3"
                   cols="80"
@@ -206,7 +206,7 @@ export default function checkIn() {
                 <button
                   onClick={(e) => postData(e)}
                   name="button"
-                  class="light grow btn"
+                  className="light grow btn"
                 >
                   SEND
                 </button>

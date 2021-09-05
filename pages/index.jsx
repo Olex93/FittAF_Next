@@ -92,7 +92,7 @@ export default function Home() {
                 You are here because you want to see change and you want
                 results. When you sign up with us you sign up for results.
               </p>
-              <p className="light">That's the bottom line.</p>
+              <p className="light">That&apos;s the bottom line.</p>
               <p className="light">
                 We make a commitment to you that we will do what it takes to get
                 you the results you want.{" "}
@@ -119,18 +119,18 @@ export default function Home() {
           <div className="slider-section bg-light">
             <div
               id="carouselExampleControls"
-              class="carousel slide carousel-fade"
+              className="carousel slide carousel-fade"
               data-ride="carousel"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    class="d-block w-100"
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <Image
+                    className="d-block w-100"
                     src="/images/home/online-fitness-transformation4_JB.png"
                     alt="First slide"
                   />
-                  <div class="carousel-caption">
-                    <p class="caption-text">
+                  <div className="carousel-caption">
+                    <p className="caption-text">
                       “Your simple programme helped me lose 10 kilos building
                       confidence both at the gym and in life. I never expected
                       this to have such an impact on my life – you guys are the
@@ -138,14 +138,14 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item ">
-                  <img
-                    class="d-block w-100"
+                <div className="carousel-item ">
+                  <Image
+                    className="d-block w-100"
                     src="/images/home/online-fitness-transformation6_j.png"
                     alt="Second slide"
                   />
-                  <div class="carousel-caption ">
-                    <p class="caption-text">
+                  <div className="carousel-caption ">
+                    <p className="caption-text">
                       “fitness aside you boys have brought out a new confidence
                       in me and this journey has made me a much more rounded
                       person. Best decision I have made in a long time and I’ll
@@ -153,14 +153,14 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
+                <div className="carousel-item">
+                  <Image
+                    className="d-block w-100"
                     src="images/home/online-fitness-transformation7_e.png"
                     alt="Third slide"
                   />
-                  <div class="carousel-caption ">
-                    <p class="caption-text">
+                  <div className="carousel-caption ">
+                    <p className="caption-text">
                       “3 months after my initial transformation, I have
                       continued to train weekly, I understand my nutrition and
                       still enjoy everything, I have taken on new challenges and
@@ -168,14 +168,14 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
+                <div className="carousel-item">
+                  <Image
+                    className="d-block w-100"
                     src="/images/home/online-fitness-transformation3_A.png"
                     alt="Fourth slide"
                   />
-                  <div class="carousel-caption">
-                    <p class="caption-text">
+                  <div className="carousel-caption">
+                    <p className="caption-text">
                       “Frankie and Alex were great at checking in with me and
                       providing new weekly targets to keep me motivated! They
                       were as committed to my goals as I was giving me that
@@ -183,14 +183,14 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
+                <div className="carousel-item">
+                  <Image
+                    className="d-block w-100"
                     src="/images/home/online-fitness-transformation5_L.png"
                     alt="Fourth slide"
                   />
-                  <div class="carousel-caption">
-                    <p class="caption-text">
+                  <div className="carousel-caption">
+                    <p className="caption-text">
                       “The FITT AF community is super kind and helpful. The
                       lives are super motivational and have kept me going
                       through lockdown! Couldn’t recommend them enough❤️”
@@ -199,28 +199,28 @@ export default function Home() {
                 </div>
               </div>
               <a
-                class="carousel-control-prev "
+                className="carousel-control-prev "
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon"
+                  className="carousel-control-prev-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </a>
               <a
-                class="carousel-control-next"
+                className="carousel-control-next"
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon"
+                  className="carousel-control-next-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </a>
             </div>
           </div>
@@ -327,14 +327,14 @@ export default function Home() {
             <div className="container-fluid trainers ">
               <div className=" row">
                 <div className="col">
-                  <img
+                  <Image
                     className="your-online-pt frank img-responsive"
                     src="/images/f-and-a/online-pt-frankie.png"
                     alt="Online Fitness Trainer Frankie in action."
                   />
                 </div>
                 <div className="col right-col">
-                  <img
+                  <Image
                     className="your-online-pt alex pull-right img-responsive"
                     src="/images/f-and-a/online-personal-trainer-alex.png"
                     alt="Online Personal Trainer Alex in action."
@@ -345,7 +345,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div class="container-fluid bg-dred mobile-section" id="got-a-question">
+        <div className="container-fluid bg-dred mobile-section" id="got-a-question">
           <div>
             {messageSent && (
               <>
@@ -353,8 +353,8 @@ export default function Home() {
                   Your message has been sent
                 </h3>
                 <p className="light">
-                  Thanks for reaching out, we can't wait to find out how we can
-                  help. We'll be in touch soon!
+                  Thanks for reaching out, we can&apos;t wait to find out how we can
+                  help. We&apos;ll be in touch soon!
                 </p>
               </>
             )}
@@ -362,7 +362,7 @@ export default function Home() {
               <>
                 <h3 className="light promise-heading">Uh oh</h3>
                 <p className="light">
-                  We've had a bit of a technical issue. Please contact us
+                  We&apos;ve had a bit of a technical issue. Please contact us
                   directly on{" "}
                   <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>
                   .
@@ -371,10 +371,10 @@ export default function Home() {
             )}
             {!messageSent && !errorMessage && (
               <>
-                <h3 class="light promise-heading">Got A Question?</h3>
-                <div class="form-container">
-                  <form class="contact-form">
-                    <label class=" light" for="name">
+                <h3 className="light promise-heading">Got A Question?</h3>
+                <div className="form-container">
+                  <form className="contact-form">
+                    <label className=" light" htmlFor="name">
                       Name*
                     </label>
                     <input
@@ -384,7 +384,7 @@ export default function Home() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
-                    <label class="light" for="email">
+                    <label className="light" htmlFor="email">
                       Email*
                     </label>
                     <input
@@ -394,7 +394,7 @@ export default function Home() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
-                    <label class="light" for="contactNumber">
+                    <label className="light" htmlFor="contactNumber">
                       Contact Number*
                     </label>
                     <input
@@ -404,7 +404,7 @@ export default function Home() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
-                    <label class="light" for="question">
+                    <label className="light" htmlFor="question">
                       Your Question
                     </label>
                     <textarea
@@ -417,7 +417,7 @@ export default function Home() {
                     <button
                       type="submit"
                       name="button"
-                      class="light grow btn"
+                      className="light grow btn"
                       onClick={(e) => sendMessage(e)}
                     >
                       SEND

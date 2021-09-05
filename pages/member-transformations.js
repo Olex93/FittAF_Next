@@ -62,7 +62,7 @@ export default function MemberTransformations() {
                 Get inspired by the success of our clients!
               </p>
 
-              <div class="row" data-masonry='{"percentPosition": true }'>
+              <div className="row" data-masonry='{"percentPosition": true }'>
                 {transformationData !== null &&
                   imagesLoaded &&
                   transformationData.memberTestimonialCollection.items.map(

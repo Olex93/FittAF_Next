@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import styles from "../scss/navbar.module.scss";
+import Image from "next/image";
 
 export default function Navbar(props) {
   const [navState, setNavState] = React.useState("hide");
@@ -41,7 +42,7 @@ export default function Navbar(props) {
       <nav className="navbar bg-dred bottom-shadow">
         <Link href="/">
           <a className="navbar-brand">
-            <img
+            <Image
               src="images/FittAF_logo_white.png"
               className="logoImg"
               alt="FittAF Logo."
@@ -49,7 +50,7 @@ export default function Navbar(props) {
           </a>
         </Link>
         <button className="grow hamburger transparent" onClick={toggleNav}>
-          <img
+          <Image
             src="/images/hamburger.png"
             className="hamburger"
             alt="Hamburger menu icon."

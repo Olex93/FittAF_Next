@@ -53,7 +53,7 @@ export default function Start() {
     <>
       <Head>
         <title>Fitt AF - Start a membership</title>
-        <meta name="description" content="Let's get going with a Fitt AF membership!" />
+        <meta name="description" content="Let&apos;s get going with a Fitt AF membership!" />
       </Head>
 
       <div className="signupBg">
@@ -64,8 +64,8 @@ export default function Start() {
                 <>
                   <h1 className="signupHeading">Your message has been sent</h1>
                   <p>
-                    Thanks for reaching out, we can't wait to find out how we
-                    can help. We'll be in touch soon!
+                    Thanks for reaching out, we can&apos;t wait to find out how we
+                    can help. We&apos;ll be in touch soon!
                   </p>
                 </>
               )}
@@ -73,20 +73,20 @@ export default function Start() {
                 <>
                   <h1 className="signupHeading">Uh oh</h1>
                   <p>
-                    We've had a bit of a technical issue. Please contact us directly on <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>.
+                    We&apos;ve had a bit of a technical issue. Please contact us directly on <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>.
                   </p>
                 </>
               )}
               {!messageSent && !errorMessage && (
                 <>
-                  <h1 className="signupHeading">Let's Go</h1>
+                  <h1 className="signupHeading">Let&apos;s Go</h1>
                   <p>
-                    Fill in your details below and we'll be in touch to get you
+                    Fill in your details below and we&apos;ll be in touch to get you
                     signed up!
                   </p>
                   <div>
                     <form>
-                      <label for="name">Name*</label>
+                      <label htmlFor="name">Name*</label>
                       <input
                         type="text"
                         name="name"
@@ -94,7 +94,7 @@ export default function Start() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
-                      <label for="email">Email*</label>
+                      <label htmlFor="email">Email*</label>
                       <input
                         type="email"
                         name="email"
@@ -102,7 +102,7 @@ export default function Start() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
-                      <label for="contactNumber">Contact Number*</label>
+                      <label htmlFor="contactNumber">Contact Number*</label>
                       <input
                         type="tel"
                         name="contactNumber"
@@ -110,7 +110,7 @@ export default function Start() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                       />
-                      <label for="goal">Number one goal</label>
+                      <label htmlFor="goal">Number one goal</label>
                       <textarea
                         name="goal"
                         rows="2"

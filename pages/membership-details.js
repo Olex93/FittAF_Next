@@ -1,12 +1,17 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function MembershipDetails() {
   return (
     <>
       <Head>
         <title>Fitt AF - Membership Details</title>
-        <meta name="description" content="Find out more about a Fitt AF membership" />
+        <meta
+          name="description"
+          content="Find out more about a Fitt AF membership"
+        />
       </Head>
       <div className="signupBg">
         <div className="container-fluid">
@@ -31,7 +36,7 @@ export default function MembershipDetails() {
                   nutrition, programs and more.
                 </li>
                 <li>
-                  Live workout advice and motivation through our app's chat
+                  Live workout advice and motivation through our app&apos;s chat
                   function.
                 </li>
                 <li>
@@ -43,16 +48,21 @@ export default function MembershipDetails() {
                   to find likeminded people.
                 </li>
               </ul>
-
-              <a href="/start">
-                <button className="btn grow light" type="button" name="button">
-                  Buy Membership
-                </button>
-              </a>
+              <Link href="/start">
+                <a>
+                  <button
+                    className="btn grow light"
+                    type="button"
+                    name="button"
+                  >
+                    Buy Membership
+                  </button>
+                </a>
+              </Link>
             </div>
 
             <div className="col-md-6 my-auto imgDiv">
-              <img
+              <Image
                 src="/images/home/app-icons.png"
                 className="graphic"
                 alt="Graphic showing the online personal traininers as well as some features of the fitness app."
