@@ -21,6 +21,7 @@ const query = `
 export default function MemberTransformations() {
   const [transformationData, setTransformationData] = React.useState(null);
   const [imagesLoaded, setImagesLoaded] = React.useState(false);
+  const token = process.env.contentful_access_token
 
   React.useEffect(() => {
     window
@@ -32,7 +33,7 @@ export default function MemberTransformations() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ` + process.env.contentful_access_token,
+            Authorization: `Bearer ` + token,
           },
           body: JSON.stringify({ query }),
         }
