@@ -21,13 +21,13 @@ const query = `
 export default function MemberTransformations() {
   const [transformationData, setTransformationData] = React.useState(null);
   const [imagesLoaded, setImagesLoaded] = React.useState(false);
-  const token = process.env.contentful_access_token
+  const token = process.env.NEXT_PUBLIC_contentful_access_token
   console.log(token)
   React.useEffect(() => {
     window
       .fetch(
         "https://graphql.contentful.com/content/v1/spaces/" +
-          process.env.contentful_space_id +
+          process.env.NEXT_PUBLIC_contentful_space_id +
           "/",
         {
           method: "POST",
