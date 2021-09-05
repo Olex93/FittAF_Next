@@ -43,9 +43,11 @@ export default function Navbar(props) {
         <Link href="/">
           <a className="navbar-brand">
             <Image
-              src="images/FittAF_logo_white.png"
+              src="/images/FittAF_logo_white.png"
               className="logoImg"
               alt="FittAF Logo."
+              width={60}
+              height={60}
             />
           </a>
         </Link>
@@ -54,6 +56,8 @@ export default function Navbar(props) {
             src="/images/hamburger.png"
             className="hamburger"
             alt="Hamburger menu icon."
+            width={30}
+            height={30}
           />
         </button>
       </nav>

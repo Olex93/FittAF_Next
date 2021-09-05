@@ -5,7 +5,6 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import axios from "axios";
 
-
 export default function Home() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -57,7 +56,10 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Fitt AF</title>
-        <meta name="description" content="Online personal training delivered by professional fitness coaches." />
+        <meta
+          name="description"
+          content="Online personal training delivered by professional fitness coaches."
+        />
       </Head>
 
       <div className="container-fluid hero-bg  w-100 bg-dred">
@@ -128,6 +130,8 @@ export default function Home() {
                     className="d-block w-100"
                     src="/images/home/online-fitness-transformation4_JB.png"
                     alt="First slide"
+                    height={416}
+                    width={500}
                   />
                   <div className="carousel-caption">
                     <p className="caption-text">
@@ -143,6 +147,8 @@ export default function Home() {
                     className="d-block w-100"
                     src="/images/home/online-fitness-transformation6_j.png"
                     alt="Second slide"
+                    height={416}
+                    width={500}
                   />
                   <div className="carousel-caption ">
                     <p className="caption-text">
@@ -156,8 +162,10 @@ export default function Home() {
                 <div className="carousel-item">
                   <Image
                     className="d-block w-100"
-                    src="images/home/online-fitness-transformation7_e.png"
+                    src="/images/home/online-fitness-transformation7_e.png"
                     alt="Third slide"
+                    height={416}
+                    width={500}
                   />
                   <div className="carousel-caption ">
                     <p className="caption-text">
@@ -173,6 +181,8 @@ export default function Home() {
                     className="d-block w-100"
                     src="/images/home/online-fitness-transformation3_A.png"
                     alt="Fourth slide"
+                    height={416}
+                    width={500}
                   />
                   <div className="carousel-caption">
                     <p className="caption-text">
@@ -188,6 +198,8 @@ export default function Home() {
                     className="d-block w-100"
                     src="/images/home/online-fitness-transformation5_L.png"
                     alt="Fourth slide"
+                    height={416}
+                    width={500}
                   />
                   <div className="carousel-caption">
                     <p className="caption-text">
@@ -327,25 +339,34 @@ export default function Home() {
             <div className="container-fluid trainers ">
               <div className=" row">
                 <div className="col">
-                  <Image
-                    className="your-online-pt frank img-responsive"
-                    src="/images/f-and-a/online-pt-frankie.png"
-                    alt="Online Fitness Trainer Frankie in action."
-                  />
+                  <div className="your-online-pt frank img-responsive">
+                    <Image
+                      src="/images/f-and-a/online-pt-frankie.png"
+                      alt="Online Fitness Trainer Frankie in action."
+                      height={512}
+                      width={291}
+                    />
+                  </div>
                 </div>
                 <div className="col right-col">
-                  <Image
-                    className="your-online-pt alex pull-right img-responsive"
-                    src="/images/f-and-a/online-personal-trainer-alex.png"
-                    alt="Online Personal Trainer Alex in action."
-                  />
+                  <div className="your-online-pt alex pull-right img-responsive">
+                    <Image
+                      src="/images/f-and-a/online-personal-trainer-alex.png"
+                      alt="Online Personal Trainer Alex in action."
+                      height={512}
+                      width={291}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container-fluid bg-dred mobile-section" id="got-a-question">
+        <div
+          className="container-fluid bg-dred mobile-section"
+          id="got-a-question"
+        >
           <div>
             {messageSent && (
               <>
@@ -353,8 +374,8 @@ export default function Home() {
                   Your message has been sent
                 </h3>
                 <p className="light">
-                  Thanks for reaching out, we can&apos;t wait to find out how we can
-                  help. We&apos;ll be in touch soon!
+                  Thanks for reaching out, we can&apos;t wait to find out how we
+                  can help. We&apos;ll be in touch soon!
                 </p>
               </>
             )}

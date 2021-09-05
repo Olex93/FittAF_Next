@@ -56,6 +56,7 @@ export default function AboutUs() {
                     className="curved-bottom bottom-shadow us"
                     src="/images/f-and-a/frankie-training-outdoors.jpg"
                     alt="Image of online personal trainer Frankie excersising outside."
+                    layout="fill"
                   />
                 </div>
                 <div className="col-lg-6 scrollable">
@@ -135,6 +136,7 @@ export default function AboutUs() {
                     className="bottom-shadow curved-bottom us"
                     src="/images/f-and-a/alex-coaching-in-gym.jpg"
                     alt="Image of online fitness coach Alex coaching in a gym."
+                    layout="fill"
                   />
                 </div>
                 <div className="col-lg-6 scrollable">

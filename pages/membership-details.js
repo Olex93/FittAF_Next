@@ -62,11 +62,14 @@ export default function MembershipDetails() {
             </div>
 
             <div className="col-md-6 my-auto imgDiv">
-              <Image
-                src="/images/home/app-icons.png"
-                className="graphic"
-                alt="Graphic showing the online personal traininers as well as some features of the fitness app."
-              />
+              <div className="graphic">
+                <Image
+                  src="/images/home/app-icons.png"
+                  alt="Graphic showing the online personal traininers as well as some features of the fitness app."
+                  width={640}
+                  height={485}
+                />
+              </div>
             </div>
           </div>
         </div>

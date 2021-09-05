@@ -267,6 +267,7 @@ box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
 .carousel-inner{
   margin: auto;
   max-width: 500px;
+  display: block;
 }
 
 
@@ -286,7 +287,7 @@ box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
   height:165px;
   right:auto;
   left:auto;
-  margin:0 5%;
+  margin:-6px 5%;
   top:0;
   padding:20px ;
   background-color: rgba(180,2,2,0.8);

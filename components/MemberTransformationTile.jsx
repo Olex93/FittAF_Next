@@ -19,6 +19,7 @@ export default function MemberTransformationTile(props) {
           alt={props.description}
           className="transformationImage"
           src={props.imgUrl}
+          layout="fill"
         />
         <p className="transformationName">{props.name}</p>
         <p className="transformationCaption">{props.caption}</p>

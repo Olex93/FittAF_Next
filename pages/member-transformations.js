@@ -42,6 +42,7 @@ export default function MemberTransformations() {
         if (errors) {
           console.error(errors);
         }
+        console.log(data)
         setTransformationData(data);
       })
       .then(setImagesLoaded(true));
@@ -63,6 +64,7 @@ export default function MemberTransformations() {
               </p>
 
               <div className="row" data-masonry='{"percentPosition": true }'>
+
                 {transformationData !== null &&
                   imagesLoaded &&
                   transformationData.memberTestimonialCollection.items.map(

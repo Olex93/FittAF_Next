@@ -8,3 +8,9 @@ module.exports = {
     contentful_space_id: "zf0jsr7x8x2u",
   },
 };
+
+module.exports = {
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
+}
