@@ -22,7 +22,7 @@ export default function MemberTransformations() {
   const [transformationData, setTransformationData] = React.useState(null);
   const [imagesLoaded, setImagesLoaded] = React.useState(false);
   const token = process.env.contentful_access_token
-
+  console.log(token)
   React.useEffect(() => {
     window
       .fetch(
