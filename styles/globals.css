@@ -458,13 +458,15 @@ input[name="g-recaptcha-response"] {
   background-size: cover;
   background-position: bottom;
   padding:0 5% 0 5%;
+  padding-bottom: 50px;
+  min-height: calc(100vh - 80px);
 }
-
+/* 
 .fullHeight{
   height:100vh;
-}
+} */
 
-.signupheading{
+.signupHeading{
   padding-top:50px;
 }
 
@@ -588,7 +590,7 @@ li.active a:hover{
  
  
  .radioQuote{
-   border:none;
+   /* border:none; */
    margin: 1em 0;
    padding: 0.5em 10px;
    font-size: 17px;
@@ -624,106 +626,6 @@ li.active a:hover{
   cursor: pointer;
   height: 0;
   width: 0;
-}
-
-/* Create a custom radio button */
-label span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-}
-.greenCheckmark{
-  background-color: #57be6a;
-}
-.amberCheckmark{
-  background-color: #e08031;
-}
-.redCheckmark{
-  background-color: #db413d;
-}
-
-/* On mouse-over, add a lighter background color */
-.container:hover input ~ .greenCheckmark {
-  background-color: #a8ddb2;
-}
-.container:hover input ~ .amberCheckmark {
-  background-color: #f0c19a;
-}
-.container:hover input ~ .redCheckmark {
-  background-color: #eda19f;
-}
-
-
-/* When the checkbox is checked, add a background */
-.container input:checked ~ .greenCheckmark {
-  background-color: #a8ddb2;
-}
-.container input:checked ~ .amberCheckmark {
-  background-color: #f0c19a;
-}
-.container input:checked ~ .redCheckmark {
-  background-color: #eda19f;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.greenCheckmark:after {
-  content: "✓";
-  position: absolute;
-  display: none;
-}
-.amberCheckmark:after {
-  content: "✓";
-  position: absolute;
-  display: none;
-}
-.redCheckmark:after {
-  content: "✓";
-  position: absolute;
-  display: none;
-}
-
-
-/* Show the checkmark when checked */
-.container input:checked ~ .greenCheckmark:after {
-  display: block;
-}
-.container input:checked ~ .amberCheckmark:after {
-  display: block;
-}
-.container input:checked ~ .redCheckmark:after {
-  display: block;
-}
-
-
-/* Style the checkmark/indicator */
-.container .greenCheckmark:after {
-  left: 25px;
-  top: 11px;
-  font-size: 40px;
-  color:white;
-}
-.container .amberCheckmark:after {
-  left: 25px;
-  top: 11px;
-  font-size: 40px;
-  color:white;
-}
-.container .redCheckmark:after {
-  left: 25px;
-  top: 11px;
-  font-size: 40px;
-  color:white;
-}
-
-.googleForm{
-  padding:20px 0;
-}
-
-.colorLabel{
-  padding-top:20px;
 }
 
 

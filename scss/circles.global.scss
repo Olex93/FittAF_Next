@@ -1,0 +1,52 @@
+/* Create a custom radio button */
+.circle {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  transition: all 0.2s;
+
+  &::after {
+    content: "✓";
+    display: none;
+    font-size: 40px;
+    color: white;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+    transition: all 0.2s;
+  }
+
+  &.green {
+    background-color: #57be6a;
+    &.activeGreen {
+      background-color: #a8ddb2;
+      &::after {
+        display: block;
+      }
+    }
+  }
+  &.amber {
+    background-color: #e08031;
+    &.activeAmber {
+      background-color: #f0c19a;
+      &::after {
+        display: block;
+      }
+    }
+  }
+  &.red {
+    background-color: #db413d;
+    &.activeRed {
+      background-color: #eda19f;
+      &::after {
+        display: block;
+      }
+    }
+  }
+}

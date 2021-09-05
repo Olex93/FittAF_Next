@@ -1,14 +1,65 @@
+import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import axios from "axios";
+
 
 export default function Home() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [goal, setGoal] = useState("");
+  const [email, setEmail] = useState("");
+  const [messageSent, setMessageSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const resetFields = () => {
+    setName("");
+    setPhone("");
+    setGoal("");
+    setEmail("");
+  };
+
+  const formSubmission = {
+    name: name,
+    phone: phone,
+    goal: goal,
+    email: email,
+  };
+
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://fittaf.herokuapp.com/contact",
+        formSubmission,
+        axiosConfig
+      );
+      if (response.data === "success") {
+        resetFields();
+        setMessageSent(true);
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(true);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Fitt AF</title>
+        <meta name="description" content="Online personal training delivered by professional fitness coaches." />
       </Head>
+
       <div className="container-fluid hero-bg  w-100 bg-dred">
         <div className="hero container-fluid ">
           <h1 className="hero-header light">
@@ -66,53 +117,112 @@ export default function Home() {
           </div>
 
           <div className="slider-section bg-light">
-            
-
-          <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="/images/home/online-fitness-transformation4_JB.png" alt="First slide"/>
-                <div class="carousel-caption">
-                  <p class="caption-text">“Your simple programme helped me lose 10 kilos building confidence both at the gym and in life. I never expected this to have such an impact on my life – you guys are the best!”</p>
+            <div
+              id="carouselExampleControls"
+              class="carousel slide carousel-fade"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    class="d-block w-100"
+                    src="/images/home/online-fitness-transformation4_JB.png"
+                    alt="First slide"
+                  />
+                  <div class="carousel-caption">
+                    <p class="caption-text">
+                      “Your simple programme helped me lose 10 kilos building
+                      confidence both at the gym and in life. I never expected
+                      this to have such an impact on my life – you guys are the
+                      best!”
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item ">
+                  <img
+                    class="d-block w-100"
+                    src="/images/home/online-fitness-transformation6_j.png"
+                    alt="Second slide"
+                  />
+                  <div class="carousel-caption ">
+                    <p class="caption-text">
+                      “fitness aside you boys have brought out a new confidence
+                      in me and this journey has made me a much more rounded
+                      person. Best decision I have made in a long time and I’ll
+                      be annoyed if we don’t go for a beer soon!”
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src="images/home/online-fitness-transformation7_e.png"
+                    alt="Third slide"
+                  />
+                  <div class="carousel-caption ">
+                    <p class="caption-text">
+                      “3 months after my initial transformation, I have
+                      continued to train weekly, I understand my nutrition and
+                      still enjoy everything, I have taken on new challenges and
+                      now more than ever feel stronger and fitter!”
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src="/images/home/online-fitness-transformation3_A.png"
+                    alt="Fourth slide"
+                  />
+                  <div class="carousel-caption">
+                    <p class="caption-text">
+                      “Frankie and Alex were great at checking in with me and
+                      providing new weekly targets to keep me motivated! They
+                      were as committed to my goals as I was giving me that
+                      extra self-belief”
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src="/images/home/online-fitness-transformation5_L.png"
+                    alt="Fourth slide"
+                  />
+                  <div class="carousel-caption">
+                    <p class="caption-text">
+                      “The FITT AF community is super kind and helpful. The
+                      lives are super motivational and have kept me going
+                      through lockdown! Couldn’t recommend them enough❤️”
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div class="carousel-item ">
-                <img class="d-block w-100" src="/images/home/online-fitness-transformation6_j.png" alt="Second slide"/>
-                <div class="carousel-caption ">
-                  <p class="caption-text">“fitness aside you boys have brought out a new confidence in me and this journey has made me a much more rounded person. Best decision I have made in a long time and I’ll be annoyed if we don’t go for a beer soon!”</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="images/home/online-fitness-transformation7_e.png" alt="Third slide"/>
-                <div class="carousel-caption ">
-                  <p class="caption-text">“3 months after my initial transformation, I have continued to train weekly, I understand my nutrition and still enjoy everything, I have taken on new challenges and now more than ever feel stronger and fitter!”</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="/images/home/online-fitness-transformation3_A.png" alt="Fourth slide"/>
-                <div class="carousel-caption">
-                  <p class="caption-text">“Frankie and Alex were great at checking in with me and providing new weekly targets to keep me motivated! They were as committed to my goals as I was giving me that extra self-belief”</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="/images/home/online-fitness-transformation5_L.png" alt="Fourth slide"/>
-                <div class="carousel-caption">
-                  <p class="caption-text">“The FITT AF community is super kind and helpful. The lives are super motivational and have kept me going through lockdown! Couldn’t recommend them enough❤️”</p>
-                </div>
-              </div>
+              <a
+                class="carousel-control-prev "
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-
-
-
           </div>
         </div>
 
@@ -235,34 +345,89 @@ export default function Home() {
           </div>
         </div>
 
-        {/* <div className="container-fluid bg-dred mobile-section" id="got-a-question">
+        <div class="container-fluid bg-dred mobile-section" id="got-a-question">
           <div>
-            <h3 className="light promise-heading">Got A Question?</h3>
-            <div className="form-container">
-              <form className="contact-form" action="/" method="post">
-                <label className=" light" for="name">
-                  Name*
-                </label>
-                <input type="text" name="name" required />
-                <label className="light" for="email">
-                  Email*
-                </label>
-                <input type="email" name="email" required />
-                <label className="light" for="contactNumber">
-                  Contact Number*
-                </label>
-                <input type="tel" name="contactNumber" required />
-                <label className="light" for="question">
-                  Your Question
-                </label>
-                <textarea name="question" rows="4" cols="80"></textarea>
-                <button type="submit" name="button" className="light grow btn">
-                  SEND
-                </button>
-              </form>
-            </div>
+            {messageSent && (
+              <>
+                <h3 className="light promise-heading">
+                  Your message has been sent
+                </h3>
+                <p className="light">
+                  Thanks for reaching out, we can't wait to find out how we can
+                  help. We'll be in touch soon!
+                </p>
+              </>
+            )}
+            {errorMessage && (
+              <>
+                <h3 className="light promise-heading">Uh oh</h3>
+                <p className="light">
+                  We've had a bit of a technical issue. Please contact us
+                  directly on{" "}
+                  <a href="mailto:Fittafmail@gmail.com">Fittafmail@gmail.com</a>
+                  .
+                </p>
+              </>
+            )}
+            {!messageSent && !errorMessage && (
+              <>
+                <h3 class="light promise-heading">Got A Question?</h3>
+                <div class="form-container">
+                  <form class="contact-form">
+                    <label class=" light" for="name">
+                      Name*
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <label class="light" for="email">
+                      Email*
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label class="light" for="contactNumber">
+                      Contact Number*
+                    </label>
+                    <input
+                      type="tel"
+                      name="contactNumber"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                    <label class="light" for="question">
+                      Your Question
+                    </label>
+                    <textarea
+                      name="question"
+                      rows="4"
+                      cols="80"
+                      value={goal}
+                      onChange={(e) => setGoal(e.target.value)}
+                    ></textarea>
+                    <button
+                      type="submit"
+                      name="button"
+                      class="light grow btn"
+                      onClick={(e) => sendMessage(e)}
+                    >
+                      SEND
+                    </button>
+                  </form>
+                </div>
+              </>
+            )}
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

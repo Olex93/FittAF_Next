@@ -7,7 +7,7 @@ export default function Navbar(props) {
   const [navState, setNavState] = React.useState("hide");
 
   const toggleNav = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (navState === "hide") {
       setNavState("show");
     } else {
@@ -22,19 +22,19 @@ export default function Navbar(props) {
           &times;
         </a>
         <Link href="/">
-          <a>Home</a>
+          <a onClick={toggleNav}>Home</a>
         </Link>
         <Link href="/about-us">
-          <a>About Us</a>
+          <a onClick={toggleNav}>About Us</a>
         </Link>
         <Link href="/membership-details">
-          <a>Membership Details</a>
+          <a onClick={toggleNav}>Membership Details</a>
         </Link>
         <Link href="/member-transformations">
-          <a>Member Transformations</a>
+          <a onClick={toggleNav}>Member Transformations</a>
         </Link>
         <Link href="/contact">
-          <a>Contact Us</a>
+          <a onClick={toggleNav}>Contact Us</a>
         </Link>
       </div>
 
