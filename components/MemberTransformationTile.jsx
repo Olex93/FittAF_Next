@@ -15,13 +15,17 @@ export default function MemberTransformationTile(props) {
       </Head>
       <div className="col-xl-3 col-lg-4 col-md-6 col-12 masonry-item">
         <div className="transformationWrapper">
-          <Image
-            alt={props.description}
-            className="transformationImage"
-            src={props.imgUrl}
-            width={263}
-            height={219}
-          />
+          <div style={{display: 'block', width: '100%', }}>
+            <img
+              alt={props.description}
+              className="transformationImage"
+              src={props.imgUrl}
+              // width='100%'
+              // layout="responsive"
+              // height="auto"
+  
+            />
+          </div>
           <p className="transformationName">{props.name}</p>
           <p className="transformationCaption">{props.caption}</p>
         </div>
