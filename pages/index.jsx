@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import axios from "axios";
+import JsScripts from '../components/JsScripts'
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -61,7 +62,7 @@ export default function Home() {
           content="Online personal training delivered by professional fitness coaches."
         />
       </Head>
-
+      <JsScripts />
       <div className="container-fluid hero-bg  w-100 bg-dred">
         <div className="hero container-fluid ">
           <h1 className="hero-header light">
