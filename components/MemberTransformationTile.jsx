@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function MemberTransformationTile(props) {
   return (
     <>
-    <Head>
+      <Head>
         <script
           src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
           integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
@@ -13,18 +13,19 @@ export default function MemberTransformationTile(props) {
           async
         ></script>
       </Head>
-    <div className="col-xl-3 col-lg-4 col-md-6 col-12 masonry-item">
-      <div className="transformationWrapper">
-        <Image
-          alt={props.description}
-          className="transformationImage"
-          src={props.imgUrl}
-          layout="fill"
-        />
-        <p className="transformationName">{props.name}</p>
-        <p className="transformationCaption">{props.caption}</p>
+      <div className="col-xl-3 col-lg-4 col-md-6 col-12 masonry-item">
+        <div className="transformationWrapper">
+          <Image
+            alt={props.description}
+            className="transformationImage"
+            src={props.imgUrl}
+            width={263}
+            height={219}
+          />
+          <p className="transformationName">{props.name}</p>
+          <p className="transformationCaption">{props.caption}</p>
+        </div>
       </div>
-    </div>
     </>
   );
 }
