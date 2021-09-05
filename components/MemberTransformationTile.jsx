@@ -20,10 +20,8 @@ export default function MemberTransformationTile(props) {
               alt={props.description}
               className="transformationImage"
               src={props.imgUrl}
-              // width='100%'
-              // layout="responsive"
-              // height="auto"
-  
+              width={props.width}
+              height={props.height}
             />
           </div>
           <p className="transformationName">{props.name}</p>

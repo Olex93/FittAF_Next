@@ -10,6 +10,8 @@ const query = `
           title
           description
           url
+          height
+          width
         }
         captionText
         customerName
@@ -76,6 +78,8 @@ export default function MemberTransformations() {
                         imgUrl={item.beforeAfterImage.url}
                         name={item.customerName}
                         caption={item.captionText}
+                        height={item.height}
+                        width={item.width}
                       />
                     )
                   )}
