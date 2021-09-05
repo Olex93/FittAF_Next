@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 export default function MemberTransformationTile(props) {
+  console.log(props)
   return (
     <>
       <Head>
@@ -15,7 +16,7 @@ export default function MemberTransformationTile(props) {
       </Head>
       <div className="col-xl-3 col-lg-4 col-md-6 col-12 masonry-item">
         <div className="transformationWrapper">
-          <div style={{display: 'block', width: '100%', }}>
+          {/* <div style={{display: 'block', width: '100%' }}> */}
             <Image
               alt={props.description}
               className="transformationImage"
@@ -23,7 +24,7 @@ export default function MemberTransformationTile(props) {
               width={props.width}
               height={props.height}
             />
-          </div>
+          {/* </div> */}
           <p className="transformationName">{props.name}</p>
           <p className="transformationCaption">{props.caption}</p>
         </div>

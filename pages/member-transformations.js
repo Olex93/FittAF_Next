@@ -78,8 +78,8 @@ export default function MemberTransformations() {
                         imgUrl={item.beforeAfterImage.url}
                         name={item.customerName}
                         caption={item.captionText}
-                        height={item.height}
-                        width={item.width}
+                        height={item.beforeAfterImage.height}
+                        width={item.beforeAfterImage.width}
                       />
                     )
                   )}
