@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import JsScripts from "../components/JsScripts";
 
 export default function AboutUs() {
   const [frankieButton, setFrankieButton] = React.useState("active");
@@ -23,6 +24,8 @@ export default function AboutUs() {
         <title>Fitt AF - About us</title>
         <meta name="description" content="Get to know the Fitt AF coaches" />
       </Head>
+      <JsScripts />
+
       <div className="signupBg">
         <h1 className="signupHeading">Your New PTs</h1>
 
@@ -57,6 +60,7 @@ export default function AboutUs() {
                     src="/images/f-and-a/frankie-training-outdoors.jpg"
                     alt="Image of online personal trainer Frankie excersising outside."
                     layout="fill"
+                    objectFit='cover'
                   />
                 </div>
                 <div className="col-lg-6 scrollable">
@@ -137,6 +141,8 @@ export default function AboutUs() {
                     src="/images/f-and-a/alex-coaching-in-gym.jpg"
                     alt="Image of online fitness coach Alex coaching in a gym."
                     layout="fill"
+                    objectFit='cover'
+
                   />
                 </div>
                 <div className="col-lg-6 scrollable">

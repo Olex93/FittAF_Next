@@ -35,7 +35,8 @@ export default function Start() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://fittaf.herokuapp.com/start",
+        "https://fittaf.herokuapp.com/api/start",
+        // "http://localhost:4000/api/start",
         formSubmission,
         axiosConfig
       );

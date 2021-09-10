@@ -35,6 +35,7 @@ export default function Contact() {
     try {
       const response = await axios.post(
         "https://fittaf.herokuapp.com/contact",
+                // "http://localhost:4000/contact",
         formSubmission,
         axiosConfig
       );

@@ -72,7 +72,9 @@ export default function CheckIn() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://fittaf.herokuapp.com/check-in",
+        "https://fittaf.herokuapp.com/api/check-in",
+                // "http://localhost:4000/api/check-in",
+
         formSubmission,
         axiosConfig
       );
