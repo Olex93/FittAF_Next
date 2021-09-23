@@ -45,10 +45,10 @@ export default function Verify() {
     <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 pt-5">
       {!verified && !passwordCreated && (
         <div>
-          <h1>Let's get you set up</h1>
+          <h1>Let`&apos;`s get you set up</h1>
           <p>
             First of all, please enter your email address as well as your one
-            time password so that we can verify you're a genuine Fitt AF
+            time password so that we can verify you`&apos;`re a genuine Fitt AF
             customer.
           </p>
           <input
@@ -78,7 +78,7 @@ export default function Verify() {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            minlength="8"
+            minLength="8"
           />
           <button className="btn grow light formBtn" onClick={sendPassword}>
             Submit
@@ -87,7 +87,7 @@ export default function Verify() {
       )}
       {verified && passwordCreated && (
         <div>
-          <h1>Awesome! You're all set up</h1>
+          <h1>Awesome! You`&apos;`re all set up</h1>
           <p>Login to access the members only Fitt AF content library.</p>
           <LoginForm />
         </div>

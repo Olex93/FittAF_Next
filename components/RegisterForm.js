@@ -33,7 +33,7 @@ export default function RegisterForm() {
         <input
           placeholder="password"
           type="password"
-          minlength="8"
+          minLength="8"
           onChange={(e) => setRegisterPassword(e.target.value)}
         />
         <button className="btn grow light formBtn" onClick={register}>Submit</button>
