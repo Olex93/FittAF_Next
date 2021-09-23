@@ -1,9 +1,7 @@
 import React, {useState} from "react";
-import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import JsScripts from "./JsScripts";
 import axios from "axios";
 
 
@@ -59,14 +57,6 @@ export default function LandingPage() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Fitt AF</title>
-        <meta
-          name="description"
-          content="Online personal training delivered by professional fitness coaches."
-        />
-      </Head>
-      <JsScripts />
       <div className="container-fluid hero-bg  w-100 bg-dred">
         <div className="hero container-fluid ">
           <h1 className="hero-header light">

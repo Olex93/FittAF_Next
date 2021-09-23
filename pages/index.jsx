@@ -3,8 +3,11 @@ import JsScripts from "../components/JsScripts";
 import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
 import axios from "axios";
+import Head from "next/head";
+import DashboardLeftNav from '../components/DashboardLeftNav'
 
 const Home = (props) => {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
   const getUser = () => {
@@ -15,22 +18,31 @@ const Home = (props) => {
     }).then((res) => {
       setData(res.data);
       console.log(res.data);
+      setLoading(false);
     });
   };
 
   useEffect(() => {
     getUser();
   }, []);
+
   return (
     <>
+      <Head>
+        <title>Fitt AF</title>
+        <meta
+          name="description"
+          content="Online personal training delivered by professional fitness coaches."
+        />
+      </Head>
       <JsScripts />
-      {data && (
-        <div>
-          <p>You are logged in</p>
-        </div>
-      )}
+      {!loading && (
+        <>
+          {data && <DashboardLeftNav />}
 
-      {!data && <LandingPage />}
+          {!data && <LandingPage />}
+        </>
+      )}
     </>
   );
 };

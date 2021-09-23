@@ -1,52 +1,61 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { connect, useDispatch } from "react-redux";
-import Router from 'next/router'
+import Router from "next/router";
 
 const LoginForm = (props) => {
   const [loginUsername, setloginUsername] = useState("");
   const [name, setName] = useState("");
   const [loginPassword, setloginPassword] = useState("");
   const [data, setData] = useState(null);
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
 
   const login = () => {
+    const lcUsername = loginUsername.toLocaleLowerCase()
     axios({
       method: "POST",
       data: {
-        username: loginUsername,
+        username: lcUsername,
         password: loginPassword,
       },
       withCredentials: true,
       url: "http://localhost:4000/api/login",
     }).then((res) => {
-      if (res.data) {
+      if (res.data == "Successfully Authenticated") {
         dispatch({
           type: "LOG_IN",
         });
+        Router.push("/");
+      } else {
+        setError(res.data);
       }
-      console.log(res.data);
-      if (res.data.name !== null ) {
-        Router.push('/')
-      }
-    })
+    });
   };
 
   return (
-    <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 pt-5">
-      <div>
-        <h1>login</h1>
-        <input
-          placeholder="username"
-          onChange={(e) => setloginUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setloginPassword(e.target.value)}
-        />
-        <button className="btn grow light formBtn" onClick={login}>Submit</button>
-      </div>
+    <div>
+      <h1>login</h1>
+      <input
+        placeholder="username"
+        onChange={(e) => setloginUsername(e.target.value)}
+      />
+      <input
+        placeholder="password"
+        type="password"
+        onChange={(e) => setloginPassword(e.target.value)}
+      />
+      <button className="btn grow light formBtn" onClick={login}>
+        Submit
+      </button>
+      {error && (
+        <div className="mt-3">
+          <p>
+            <i>{error}.</i>
+          </p>
+        </div>
+      )}
     </div>
   );
 };
