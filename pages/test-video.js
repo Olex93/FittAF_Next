@@ -21,7 +21,6 @@ function TestVideoPage({ videoData }) {
     <div>
       {videoArray.map((video, index) => (
         <>
-          {console.log(video)}
           <ReactPlayer url={video.videoFile.url} key={index}/>
         </>
       ))}
