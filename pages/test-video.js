@@ -50,11 +50,11 @@ function TestVideoPage() {
       {videoData !== null && (
         <>
         {console.log('video data: ', videoData)}
-          {videoData.map((video) => {
+          {/* {videoData.map((video) => {
             <video>
               <source src={video.videoFile.url} />
             </video>
-          })}
+          })} */}
         </>
       )}
     </ul>
