@@ -12,7 +12,8 @@ export default function Register() {
         username: registerUsername,
       },
       withCredentials: true,
-      url: "http://localhost:4000/api/register-client",
+      // url: "http://localhost:4000/api/register-client",
+      url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
     }).then((res) => {
       if (res.data == "User Created") {
         setUserCreated(true);

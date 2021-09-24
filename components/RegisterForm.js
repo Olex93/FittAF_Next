@@ -14,7 +14,8 @@ export default function RegisterForm() {
         password: registerPassword,
       },
       withCredentials: true,
-      url: "http://localhost:4000/api/register",
+      // url: "http://localhost:4000/api/register",
+      url: "https://fitt-af-auth-api.herokuapp.com/api/register",
     }).then((res) => console.log(res));
   };
 

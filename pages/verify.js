@@ -17,7 +17,8 @@ export default function Verify() {
         code: code,
       },
       withCredentials: true,
-      url: "http://localhost:4000/api/verify",
+      // url: "http://localhost:4000/api/verify",
+      url: "https://fitt-af-auth-api.herokuapp.com/api/verify",
     }).then((res) => {
       if (res.data == "Success") {
         setVerified(true);
@@ -33,7 +34,9 @@ export default function Verify() {
         password: password,
       },
       withCredentials: true,
-      url: "http://localhost:4000/api/first-time-password",
+      // url: "http://localhost:4000/api/first-time-password",
+      url: "https://fitt-af-auth-api.herokuapp.com/api/first-time-password",
+
     }).then((res) => {
       if (res.data == "Success") {
         setPasswordCreated(true);

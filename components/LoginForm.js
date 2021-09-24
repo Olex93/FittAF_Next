@@ -21,7 +21,9 @@ const LoginForm = (props) => {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:4000/api/login",
+      // url: "http://localhost:4000/api/login",
+      url: "https://fitt-af-auth-api.herokuapp.com/api/login",
+
     }).then((res) => {
       if (res.data == "Successfully Authenticated") {
         dispatch({

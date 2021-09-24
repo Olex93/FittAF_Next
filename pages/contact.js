@@ -35,7 +35,7 @@ export default function Contact() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://fittaf.herokuapp.com/contact",
+        "https://fitt-af-auth-api.herokuapp.com/contact",
                 // "http://localhost:4000/contact",
         formSubmission,
         axiosConfig
