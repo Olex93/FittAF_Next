@@ -6,6 +6,7 @@ import "../scss/circles.global.scss";
 import Script from "next/script";
 import { Provider } from "react-redux";
 import { useStore } from "../store";
+import {Container} from 'next/app';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState)

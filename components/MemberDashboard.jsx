@@ -4,12 +4,10 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -23,6 +21,8 @@ import MemberZone from "./dashboard/MemberZone";
 import WorkoutVideoLibrary from "./dashboard/WorkoutVideoLibrary";
 import NutritionInfo from "./dashboard/NutritionInfo";
 import ContactForm from "./ContactForm";
+import Router from 'next/router'
+import Axios from "axios";
 
 // const StyledAppBar = styled(AppBar)({
 
@@ -41,6 +41,19 @@ function MemebrDashboard(props) {
 
   const routePage = (route) => {
     setDisplayedPage(route)
+  }
+
+
+  const logOut = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:4000/api/logout",
+    }).then((res) => {
+      // setData(res.data);
+      console.log(res);
+      Router.reload('/')
+    });
   }
 
   // Content for both drawers
@@ -147,6 +160,7 @@ function MemebrDashboard(props) {
                 marginRight: "20px",
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
+              onClick={() => logOut()}
             >
               Logout
             </Typography>
@@ -154,6 +168,7 @@ function MemebrDashboard(props) {
               sx={{
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
+              onClick={() => logOut()}
             />
           </Box>
         </Toolbar>
@@ -204,7 +219,7 @@ function MemebrDashboard(props) {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {/* <h1 className="signupHeading">Welcome to the Fitt AF Member Zone</h1> */}
         {displayedPage === "member-zone" && <MemberZone />}
-        {displayedPage === "exercise-demos" && <WorkoutVideoLibrary />}
+        {displayedPage === "exercise-demo" && <WorkoutVideoLibrary />}
         {displayedPage === "nutrition-info" && <NutritionInfo />}
         {displayedPage === "contact" && <ContactForm />}
 

@@ -51,7 +51,7 @@ function ContactForm() {
   };
 
   return (
-    <div className="signupBg">
+    <div className="">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12 order-2 order-md-1">
