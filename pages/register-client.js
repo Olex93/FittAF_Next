@@ -5,6 +5,14 @@ export default function Register() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [userCreated, setUserCreated] = useState(false);
 
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
+
   const register = () => {
     axios({
       method: "POST",
@@ -14,6 +22,7 @@ export default function Register() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register-client",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
+      axiosConfig
     }).then((res) => {
       if (res.data == "User Created") {
         setUserCreated(true);

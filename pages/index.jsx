@@ -10,12 +10,21 @@ const Home = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
+
   const getUser = () => {
     axios({
       method: "GET",
       withCredentials: true,
       // url: "http://localhost:4000/user",
       url: "https://fitt-af-auth-api.herokuapp.com/user",
+      axiosConfig
     }).then((res) => {
       setData(res.data);
       console.log(res.data);

@@ -9,6 +9,15 @@ export default function Verify() {
   const [password, setPassword] = useState("");
   const [passwordCreated, setPasswordCreated] = useState(false);
 
+  
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
+
   const verifyCode = () => {
     axios({
       method: "POST",
@@ -19,6 +28,7 @@ export default function Verify() {
       withCredentials: true,
       // url: "http://localhost:4000/api/verify",
       url: "https://fitt-af-auth-api.herokuapp.com/api/verify",
+      axiosConfig
     }).then((res) => {
       if (res.data == "Success") {
         setVerified(true);
@@ -36,6 +46,7 @@ export default function Verify() {
       withCredentials: true,
       // url: "http://localhost:4000/api/first-time-password",
       url: "https://fitt-af-auth-api.herokuapp.com/api/first-time-password",
+      axiosConfig
 
     }).then((res) => {
       if (res.data == "Success") {

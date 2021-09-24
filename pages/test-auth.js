@@ -8,6 +8,14 @@ function TestAuth() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
+  
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
 
   const register = () => {
     Axios({
@@ -20,6 +28,7 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register",
+      axiosConfig
     }).then((res) => console.log(res));
   };
   const login = () => {
@@ -33,6 +42,7 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/login",
       url: "https://fitt-af-auth-api.herokuapp.com/api/login",
+      axiosConfig
     }).then((res) => console.log(res));
   };
   const getUser = () => {
@@ -40,7 +50,8 @@ function TestAuth() {
       method: "GET",
       withCredentials: true,
       // url: "http://localhost:4000/user",
-      url: "https://fitt-af-auth-api.herokuapp.com/user",      
+      url: "https://fitt-af-auth-api.herokuapp.com/user",
+      axiosConfig      
     }).then((res) => {
       setData(res.data);
       console.log(res.data);
@@ -52,6 +63,7 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",
+      axiosConfig
     }).then((res) => {
       // setData(res.data);
       console.log(res);

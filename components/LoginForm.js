@@ -12,6 +12,15 @@ const LoginForm = (props) => {
 
   const dispatch = useDispatch();
 
+  
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
+
   const login = () => {
     const lcUsername = loginUsername.toLocaleLowerCase()
     axios({
@@ -23,6 +32,7 @@ const LoginForm = (props) => {
       withCredentials: true,
       // url: "http://localhost:4000/api/login",
       url: "https://fitt-af-auth-api.herokuapp.com/api/login",
+      axiosConfig
 
     }).then((res) => {
       if (res.data == "Successfully Authenticated") {
@@ -35,6 +45,7 @@ const LoginForm = (props) => {
       }
     });
   };
+
 
   return (
     <div>

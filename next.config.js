@@ -16,3 +16,4 @@ module.exports = {
     domains: ['images.ctfassets.net'],
   },
 }
+

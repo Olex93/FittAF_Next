@@ -5,6 +5,15 @@ export default function RegisterForm() {
   const [name, setName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
+  
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      withCredentials: true,
+    },
+  };
+
   const register = () => {
     axios({
       method: "POST",
@@ -16,6 +25,7 @@ export default function RegisterForm() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register",
+      axiosConfig
     }).then((res) => console.log(res));
   };
 
