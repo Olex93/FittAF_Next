@@ -23,7 +23,7 @@ function TestVideoPage({ videoData }) {
         <>
           {console.log(video)}
           <ReactPlayer url={video.videoFile.url} key={index}/>
-        </>;
+        </>
       ))}
 
       <p>This is a test</p>
