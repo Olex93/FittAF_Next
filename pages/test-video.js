@@ -14,26 +14,21 @@ const query = `
   `;
 
 function TestVideoPage({ videoData }) {
-
   const videoArray = videoData.data.workoutVideosCollection.items;
 
   return (
     <div>
-      {videoData !== null && (
+      {videoArray.map((video) => {
         <>
-          {console.log("video data: ", videoArray)}
+          {console.log(video)}
+          <video width="320" height="240" controls>
+            <source src={video.videoFile.url} />
+          </video>
+          <p>{video.videoFile.url}</p>
+        </>;
+      })}
 
-          {videoArray.map((video) => {
-            <>
-              {console.log(video)}
-              <video width="320" height="240" controls>
-                <source src={video.videoFile.url} />
-              </video>
-              <p>{video.videoFile.url}</p>
-            </>;
-          })}
-        </>
-      )}
+      <p>This is a test</p>
     </div>
   );
 }
