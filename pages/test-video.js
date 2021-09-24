@@ -49,6 +49,7 @@ function TestVideoPage() {
     <ul>
       {videosLoaded && (
         <>
+        {console.log('video data: ', videoData)}
           {videoData.map((video) => {
             <video>
               <source src={video.videoFile.url} />
