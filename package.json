@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.0-rc.1",
+    "@mux/mux-node": "^3.3.1",
     "@netlify/plugin-nextjs": "^3.9.0",
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.3",
