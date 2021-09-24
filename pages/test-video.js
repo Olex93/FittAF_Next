@@ -19,12 +19,12 @@ function TestVideoPage({ videoData }) {
 
   return (
     <div>
-      {videoArray.map((video, index) => {
+      {videoArray.map((video, index) => (
         <>
           {console.log(video)}
           <ReactPlayer url={video.videoFile.url} key={index}/>
         </>;
-      })}
+      ))}
 
       <p>This is a test</p>
     </div>
