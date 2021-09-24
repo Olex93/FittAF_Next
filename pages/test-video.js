@@ -13,9 +13,7 @@ const query = `
   }
   `;
 
-function TestVideoPage({ data }) {
-  console.log(data);
-
+function TestVideoPage() {
   const [videosLoaded, setVideosLoaded] = React.useState(false);
   const [videos, setVideos] = React.useState('')
 
@@ -41,9 +39,10 @@ function TestVideoPage({ data }) {
         if (errors) {
           console.error(errors);
         }
-        console.log(data)
-        console.log(data.workoutVideosCollection.items);
+
         setVideos(data.workoutVideosCollection.items)
+        console.log(videos)
+        console.log(videos[0].title)
       })
       .then(setVideosLoaded(true));
   }, []);
