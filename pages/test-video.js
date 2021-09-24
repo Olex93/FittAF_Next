@@ -39,7 +39,6 @@ function TestVideoPage() {
         if (errors) {
           console.error(errors);
         }
-        console.log(data.workoutVideosCollection.items);
         setVideos(data.workoutVideosCollection.items);
       })
       .then(console.log(videos[0]))
@@ -49,9 +48,13 @@ function TestVideoPage() {
   return (
     <ul>
       {videosLoaded && (
-        <video>
-          <source src={videos[0].videoFile.url}></source>
-        </video>
+        <>
+          {videos.map((video) => {
+            <video>
+              <source src={video.videoFile.url} />
+            </video>
+          })}
+        </>
       )}
     </ul>
   );
