@@ -59,6 +59,7 @@ function TestVideoPage({ videoData }) {
               <video width="320" height="240" controls>
                 <source src={video.videoFile.url} />
               </video>
+              <p>{video.videoFile.url}</p>
             </>;
           })}
         </>
