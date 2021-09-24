@@ -22,7 +22,7 @@ export default function Register() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register-client",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
-      axiosConfig
+      // axiosConfig
     }).then((res) => {
       if (res.data == "User Created") {
         setUserCreated(true);

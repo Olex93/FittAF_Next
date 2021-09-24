@@ -58,7 +58,7 @@ function MemebrDashboard(props) {
       withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",     
-      axiosConfig 
+      // axiosConfig 
     }).then((res) => {
       // setData(res.data);
       console.log(res);

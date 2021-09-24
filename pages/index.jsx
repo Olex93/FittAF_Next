@@ -24,7 +24,7 @@ const Home = (props) => {
       withCredentials: true,
       // url: "http://localhost:4000/user",
       url: "https://fitt-af-auth-api.herokuapp.com/user",
-      axiosConfig
+      // axiosConfig
     }).then((res) => {
       setData(res.data);
       console.log(res.data);

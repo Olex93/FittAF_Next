@@ -38,7 +38,7 @@ function ContactForm() {
         "https://fitt-af-auth-api.herokuapp.com/contact",
         // "http://localhost:4000/contact",
         formSubmission,
-        axiosConfig
+        // axiosConfig
       );
       if (response.data === "success") {
         resetFields();

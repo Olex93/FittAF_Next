@@ -25,7 +25,7 @@ export default function RegisterForm() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register",
-      axiosConfig
+      // axiosConfig
     }).then((res) => console.log(res));
   };
 

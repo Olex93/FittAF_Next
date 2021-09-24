@@ -39,7 +39,7 @@ export default function Start() {
         "https://fitt-af-auth-api.herokuapp.com/api/start",
         // "http://localhost:4000/api/start",
         formSubmission,
-        axiosConfig
+        // axiosConfig
       );
       if (response.data === "success") {
         resetFields();

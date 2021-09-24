@@ -76,7 +76,7 @@ export default function CheckIn() {
         "https://fitt-af-auth-api.herokuapp.com/api/check-in",
                 // "http://localhost:4000/api/check-in",
         formSubmission,
-        axiosConfig
+        // axiosConfig
       );
       if (response.data === "success") {
         resetFields();
