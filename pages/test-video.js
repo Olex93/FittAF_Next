@@ -15,9 +15,9 @@ const query = `
 
 function TestVideoPage() {
   const [videosLoaded, setVideosLoaded] = React.useState(false);
-  const [videos, setVideos] = React.useState('')
+  const [videos, setVideos] = React.useState("");
 
-  const token = process.env.NEXT_PUBLIC_contentful_access_token
+  const token = process.env.NEXT_PUBLIC_contentful_access_token;
 
   React.useEffect(() => {
     window
@@ -39,22 +39,20 @@ function TestVideoPage() {
         if (errors) {
           console.error(errors);
         }
-
-        setVideos(data.workoutVideosCollection.items)
-        console.log(videos)
-        console.log(videos[0].title)
+        console.log(data.workoutVideosCollection.items);
+        setVideos(data.workoutVideosCollection.items);
       })
+      .then(console.log(videos))
       .then(setVideosLoaded(true));
   }, []);
 
   return (
     <ul>
-    {
-      videosLoaded && 
-      <video>
-        <source src={videos[0].videoFile.url}></source>
-      </video>
-    }
+      {videosLoaded && (
+        <video>
+          <source src={videos[0].videoFile.url}></source>
+        </video>
+      )}
     </ul>
   );
 }
