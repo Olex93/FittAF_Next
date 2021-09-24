@@ -22,7 +22,7 @@ import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import MemberZone from "./dashboard/MemberZone";
 import WorkoutVideoLibrary from "./dashboard/WorkoutVideoLibrary";
 import NutritionInfo from "./dashboard/NutritionInfo";
-import ContactForm from "./contactForm";
+import ContactForm from "./ContactForm";
 
 // const StyledAppBar = styled(AppBar)({
 
