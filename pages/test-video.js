@@ -13,7 +13,7 @@ const query = `
   }
   `;
 
-function TestVideoPage({videoData}) {
+function TestVideoPage({ videoData }) {
   // const [videosLoaded, setVideosLoaded] = React.useState(false);
   // const [videoData, setVideoData] = React.useState(null);
 
@@ -45,18 +45,21 @@ function TestVideoPage({videoData}) {
   //     .then(setVideosLoaded(true));
   // }, []);
 
-  const videoArray = videoData.data.workoutVideosCollection.items
+  const videoArray = videoData.data.workoutVideosCollection.items;
 
   return (
     <ul>
       {videoData !== null && (
         <>
-        {console.log('video data: ', videoArray)}
-        
+          {console.log("video data: ", videoArray)}
+
           {videoArray.map((video) => {
-            <video>
-              <source src={video.videoFile.url} />
-            </video>
+            <>
+              {console.log(video)}
+              <video>
+                <source src={video.videoFile.url} />
+              </video>
+            </>;
           })}
         </>
       )}
@@ -79,15 +82,15 @@ export async function getStaticProps() {
       },
       body: JSON.stringify({ query }),
     }
-  )
+  );
 
-  const videoData = await res.json()
+  const videoData = await res.json();
 
   return {
     props: {
       videoData,
     },
-  }
+  };
 }
 
 export default TestVideoPage;
