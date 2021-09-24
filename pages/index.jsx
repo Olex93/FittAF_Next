@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
 import axios from "axios";
 import Head from "next/head";
-import DashboardLeftNav from '../components/DashboardLeftNav'
+import MemebrDashboard from "../components/MemberDashboard";
 
 const Home = (props) => {
   const [loading, setLoading] = useState(true);
@@ -38,8 +38,7 @@ const Home = (props) => {
       <JsScripts />
       {!loading && (
         <>
-          {data && <DashboardLeftNav />}
-
+          {data && <MemebrDashboard />}
           {!data && <LandingPage />}
         </>
       )}
