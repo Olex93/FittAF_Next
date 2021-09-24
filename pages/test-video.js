@@ -56,7 +56,7 @@ function TestVideoPage({ videoData }) {
           {videoArray.map((video) => {
             <>
               {console.log(video)}
-              <video>
+              <video width="320" height="240" controls>
                 <source src={video.videoFile.url} />
               </video>
             </>;
