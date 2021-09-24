@@ -42,7 +42,7 @@ function TestVideoPage() {
         console.log(data.workoutVideosCollection.items);
         setVideos(data.workoutVideosCollection.items);
       })
-      .then(console.log(videos))
+      .then(console.log(videos[0]))
       .then(setVideosLoaded(true));
   }, []);
 
