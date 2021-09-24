@@ -47,7 +47,7 @@ function TestVideoPage() {
 
   return (
     <ul>
-      {videosLoaded && (
+      {videoData !== null && (
         <>
         {console.log('video data: ', videoData)}
           {videoData.map((video) => {
