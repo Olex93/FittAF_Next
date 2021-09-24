@@ -13,7 +13,7 @@ export default function Verify() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -28,7 +28,7 @@ export default function Verify() {
       withCredentials: true,
       // url: "http://localhost:4000/api/verify",
       url: "https://fitt-af-auth-api.herokuapp.com/api/verify",
-      // axiosConfig
+      axiosConfig
     }).then((res) => {
       if (res.data == "Success") {
         setVerified(true);
@@ -46,7 +46,7 @@ export default function Verify() {
       withCredentials: true,
       // url: "http://localhost:4000/api/first-time-password",
       url: "https://fitt-af-auth-api.herokuapp.com/api/first-time-password",
-      // axiosConfig
+      axiosConfig
 
     }).then((res) => {
       if (res.data == "Success") {

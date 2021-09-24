@@ -26,7 +26,7 @@ export default function Contact() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       "withCredentials": true,
     },
   };
@@ -38,7 +38,7 @@ export default function Contact() {
         "https://fitt-af-auth-api.herokuapp.com/contact",
                 // "http://localhost:4000/contact",
         formSubmission,
-        // axiosConfig
+        axiosConfig
       );
       if (response.data === "success") {
         resetFields();

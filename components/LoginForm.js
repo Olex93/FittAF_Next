@@ -16,7 +16,7 @@ const LoginForm = (props) => {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -32,7 +32,7 @@ const LoginForm = (props) => {
       withCredentials: true,
       // url: "http://localhost:4000/api/login",
       url: "https://fitt-af-auth-api.herokuapp.com/api/login",
-      // axiosConfig
+      axiosConfig
 
     }).then((res) => {
       if (res.data == "Successfully Authenticated") {

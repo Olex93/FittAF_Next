@@ -13,7 +13,7 @@ const Home = (props) => {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -24,7 +24,7 @@ const Home = (props) => {
       withCredentials: true,
       // url: "http://localhost:4000/user",
       url: "https://fitt-af-auth-api.herokuapp.com/user",
-      // axiosConfig
+      axiosConfig
     }).then((res) => {
       setData(res.data);
       console.log(res.data);

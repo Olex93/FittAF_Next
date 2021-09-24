@@ -32,7 +32,7 @@ export default function LandingPage() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
     },
   };
 
@@ -43,7 +43,7 @@ export default function LandingPage() {
         "https://fitt-af-auth-api.herokuapp.com/contact",
         // "http://localhost:4000/contact",
         formSubmission,
-        // axiosConfig
+        axiosConfig
       );
       if (response.data === "success") {
         resetFields();

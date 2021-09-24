@@ -64,7 +64,7 @@ export default function CheckIn() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       "withCredentials": true,
     },
   };
@@ -76,7 +76,7 @@ export default function CheckIn() {
         "https://fitt-af-auth-api.herokuapp.com/api/check-in",
                 // "http://localhost:4000/api/check-in",
         formSubmission,
-        // axiosConfig
+        axiosConfig
       );
       if (response.data === "success") {
         resetFields();

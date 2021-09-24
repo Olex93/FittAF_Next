@@ -8,7 +8,7 @@ export default function Register() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -22,7 +22,7 @@ export default function Register() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register-client",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
-      // axiosConfig
+      axiosConfig
     }).then((res) => {
       if (res.data == "User Created") {
         setUserCreated(true);

@@ -47,7 +47,7 @@ function MemebrDashboard(props) {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -58,7 +58,7 @@ function MemebrDashboard(props) {
       withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",     
-      // axiosConfig 
+      axiosConfig 
     }).then((res) => {
       // setData(res.data);
       console.log(res);

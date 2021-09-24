@@ -9,7 +9,7 @@ export default function RegisterForm() {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
       withCredentials: true,
     },
   };
@@ -25,7 +25,7 @@ export default function RegisterForm() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register",
-      // axiosConfig
+      axiosConfig
     }).then((res) => console.log(res));
   };
 
