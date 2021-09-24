@@ -41,7 +41,7 @@ function TestVideoPage() {
         }
         setVideoData(data.workoutVideosCollection.items);
       })
-      .then(console.log(videos[0]))
+      .then(console.log(videoData[0]))
       .then(setVideosLoaded(true));
   }, []);
 
