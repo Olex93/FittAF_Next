@@ -53,7 +53,7 @@ function TestVideoPage({ data }) {
     {
       videosLoaded && 
       <video>
-        <source src={}></source>
+        <source src={videos[0].videoFile.url}></source>
       </video>
     }
     </ul>
