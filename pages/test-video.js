@@ -45,16 +45,19 @@ function TestVideoPage({videoData}) {
   //     .then(setVideosLoaded(true));
   // }, []);
 
+  const videoArray = videoData.data.workoutVideosCollection.items
+
   return (
     <ul>
       {videoData !== null && (
         <>
-        {console.log('video data: ', videoData)}
-          {/* {videoData.map((video) => {
+        {console.log('video data: ', videoArray)}
+        
+          {videoArray.map((video) => {
             <video>
               <source src={video.videoFile.url} />
             </video>
-          })} */}
+          })}
         </>
       )}
     </ul>
