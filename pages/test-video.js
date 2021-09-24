@@ -15,7 +15,7 @@ const query = `
 
 function TestVideoPage() {
   const [videosLoaded, setVideosLoaded] = React.useState(false);
-  const [videos, setVideos] = React.useState("");
+  const [videoData, setVideoData] = React.useState("");
 
   const token = process.env.NEXT_PUBLIC_contentful_access_token;
 
@@ -39,7 +39,7 @@ function TestVideoPage() {
         if (errors) {
           console.error(errors);
         }
-        setVideos(data.workoutVideosCollection.items);
+        setVideoData(data.workoutVideosCollection.items);
       })
       .then(console.log(videos[0]))
       .then(setVideosLoaded(true));
@@ -49,7 +49,7 @@ function TestVideoPage() {
     <ul>
       {videosLoaded && (
         <>
-          {videos.map((video) => {
+          {videoData.map((video) => {
             <video>
               <source src={video.videoFile.url} />
             </video>
