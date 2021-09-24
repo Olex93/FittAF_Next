@@ -13,42 +13,44 @@ const query = `
   }
   `;
 
-function WorkoutVideoLibrary({ data }) {
-  console.log(data);
-  const [imagesLoaded, setImagesLoaded] = React.useState(false);
-
-  const token = process.env.NEXT_PUBLIC_contentful_access_token
-
-  React.useEffect(() => {
-    window
-      .fetch(
-        "https://graphql.contentful.com/content/v1/spaces/" +
-          process.env.NEXT_PUBLIC_contentful_space_id +
-          "/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ` + token,
-          },
-          body: JSON.stringify({ query }),
-        }
-      )
-      .then((response) => response.json())
-      .then(({ data, errors }) => {
-        if (errors) {
-          console.error(errors);
-        }
-        console.log(data);
-      })
-      .then(setImagesLoaded(true));
-  }, []);
+function WorkoutVideoLibrary({ videoData }) {
+  const videoArray = videoData.data.workoutVideosCollection.items;
 
   return (
-    <ul>
-      <li>test</li>
-    </ul>
+    <div>
+      {videoArray.map((video, index) => (
+        <video controls key={index} style={{width: '100%', height: '100%'}}>
+          <source src={video.videoFile.url} />
+        </video>
+      ))}
+    </div>
   );
+}
+
+export async function getStaticProps() {
+  const token = process.env.NEXT_PUBLIC_contentful_access_token;
+
+  const res = await fetch(
+    "https://graphql.contentful.com/content/v1/spaces/" +
+      process.env.NEXT_PUBLIC_contentful_space_id +
+      "/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ` + token,
+      },
+      body: JSON.stringify({ query }),
+    }
+  );
+
+  const videoData = await res.json();
+
+  return {
+    props: {
+      videoData,
+    },
+  };
 }
 
 export default WorkoutVideoLibrary;

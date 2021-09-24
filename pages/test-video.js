@@ -19,8 +19,8 @@ function TestVideoPage({ videoData }) {
   return (
     <div>
       {videoArray.map((video, index) => (
-        <video key={index}>
-          <source src={video.videoFile.url} style={{width: '100%', height: '100%'}}/>
+        <video controls key={index} style={{width: '100%', height: '100%'}}>
+          <source src={video.videoFile.url} />
         </video>
       ))}
     </div>
