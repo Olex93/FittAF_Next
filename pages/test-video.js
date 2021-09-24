@@ -17,7 +17,7 @@ function TestVideoPage({videoData}) {
   // const [videosLoaded, setVideosLoaded] = React.useState(false);
   // const [videoData, setVideoData] = React.useState(null);
 
-  const token = process.env.NEXT_PUBLIC_contentful_access_token;
+  // const token = process.env.NEXT_PUBLIC_contentful_access_token;
 
   // React.useEffect(() => {
   //   window
@@ -62,6 +62,8 @@ function TestVideoPage({videoData}) {
 }
 
 export async function getStaticProps() {
+  const token = process.env.NEXT_PUBLIC_contentful_access_token;
+
   const res = await fetch(
     "https://graphql.contentful.com/content/v1/spaces/" +
       process.env.NEXT_PUBLIC_contentful_space_id +
