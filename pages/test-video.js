@@ -20,12 +20,10 @@ function TestVideoPage({ videoData }) {
   return (
     <div>
       {videoArray.map((video, index) => (
-        <>
-          <ReactPlayer url={video.videoFile.url} key={index}/>
-        </>
+        <video key={index}>
+          <source src={video.videoFile.url} style={{width: '100%', height: '100%'}}/>
+        </video>
       ))}
-
-      <p>This is a test</p>
     </div>
   );
 }
