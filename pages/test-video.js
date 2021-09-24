@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from 'react-player';
 
 const query = `
 {
@@ -18,13 +19,10 @@ function TestVideoPage({ videoData }) {
 
   return (
     <div>
-      {videoArray.map((video) => {
+      {videoArray.map((video, index) => {
         <>
           {console.log(video)}
-          <video width="320" height="240" controls>
-            <source src={video.videoFile.url} />
-          </video>
-          <p>{video.videoFile.url}</p>
+          <ReactPlayer url={video.videoFile.url} key={index}/>
         </>;
       })}
 
