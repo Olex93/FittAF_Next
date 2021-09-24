@@ -15,7 +15,9 @@ const query = `
 
 function TestVideoPage({ data }) {
   console.log(data);
-  const [imagesLoaded, setImagesLoaded] = React.useState(false);
+
+  const [videosLoaded, setVideosLoaded] = React.useState(false);
+  const [videos, setVideos] = React.useState('')
 
   const token = process.env.NEXT_PUBLIC_contentful_access_token
 
@@ -39,14 +41,21 @@ function TestVideoPage({ data }) {
         if (errors) {
           console.error(errors);
         }
-        console.log(data);
+        console.log(data)
+        console.log(data.workoutVideosCollection.items);
+        setVideos(data.workoutVideosCollection.items)
       })
-      .then(setImagesLoaded(true));
+      .then(setVideosLoaded(true));
   }, []);
 
   return (
     <ul>
-      <li>test</li>
+    {
+      videosLoaded && 
+      <video>
+        <source src={}></source>
+      </video>
+    }
     </ul>
   );
 }
