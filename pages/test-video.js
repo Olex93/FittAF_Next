@@ -15,7 +15,7 @@ const query = `
 
 function TestVideoPage() {
   const [videosLoaded, setVideosLoaded] = React.useState(false);
-  const [videoData, setVideoData] = React.useState("");
+  const [videoData, setVideoData] = React.useState(null);
 
   const token = process.env.NEXT_PUBLIC_contentful_access_token;
 
@@ -50,11 +50,11 @@ function TestVideoPage() {
       {videoData !== null && (
         <>
         {console.log('video data: ', videoData)}
-          {/* {videoData.map((video) => {
+          {videoData.map((video) => {
             <video>
               <source src={video.videoFile.url} />
             </video>
-          })} */}
+          })}
         </>
       )}
     </ul>
