@@ -1,33 +1,37 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Register() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [userCreated, setUserCreated] = useState(false);
 
-  const axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
-      withCredentials: true,
-    },
-  };
+  const globalState = useSelector((state) => state.reducer);
+  const dispatch = useDispatch();
 
   const register = () => {
-    axios({
+    console.log(globalState.jwt);
+    const data = {
+      username: registerUsername,
+    };
+    let json = JSON.stringify(data);
+    // url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
+    fetch("http://localhost:4000/api/register-client", {
       method: "POST",
-      data: {
-        username: registerUsername,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `JWT ${globalState.jwt}`,
       },
-      withCredentials: true,
-      // url: "http://localhost:4000/api/register-client",
-      url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
-      axiosConfig
-    }).then((res) => {
-      if (res.data == "User Created") {
-        setUserCreated(true);
-      }
-    });
+      body: json,
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.log("Response from api login: ", res);
+        if (res.user) {
+          setUserCreated(true)
+        } 
+      })
+
   };
 
   return (
@@ -45,7 +49,7 @@ export default function Register() {
           {userCreated && (
             <p>
               An email invite and one time password has been sent to the email
-              address {registerUsername}. Next, the customer will need to veiry
+              address {registerUsername}. Next, the customer will need to verify
               their account and set up a password, which they can do by clicking
               on the email.
             </p>

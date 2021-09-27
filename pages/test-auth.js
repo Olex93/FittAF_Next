@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import {logIn} from '../actions'
+import {logIn, logOut} from '../actions'
 
 function TestAuth() {
 
@@ -15,46 +15,9 @@ function TestAuth() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
 
 
-  // const axiosConfig = {
-  //   headers: {
-  //     "Content-Type": "application/json;charset=UTF-8",
-  //     "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
-  //     withCredentials: true,
-  //   },
-  // };
-
-  const register = async () => {
-    const data = {
-      username: registerUsername,
-      name: name,
-      password: registerPassword,
-    };
-    let json = JSON.stringify(data);
-    fetch("http://localhost:4000/api/register", {
-      // fetch('https://fitt-af-auth-api.herokuapp.com/api/register', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response)
-        if (response.user !== undefined) {
-          // dispatch({ type: "REGISTERED_USER", registeredUser: true });
-        }
-      })
-      .catch((error) => {
-        console.log("Registration error: " + error);
-        alert("There was an error creating your account.");
-      })
-  };
-
+  
   const login = () => {
     const data = {
       username: loginUsername,
@@ -74,47 +37,25 @@ function TestAuth() {
     .then(response => response.json())
     .then(res => {
       console.log('Response from api login: ', res);
-      dispatch(logIn())
-      // if (res.error) {
-      //   alert(res.error);
-      // } else {
-      //   AsyncStorage.setItem('jwt', res.token);
-      //   // alert(`Success! You may now access protected content.`);
-      //   // Redirect to home screen
-      //   // this.props.navigator.pop()
-      //   if (res.verifiedUser === "true") {
-      //     // console.log('Friendship code returned from login api: ' + res.friendshipCode)
-      //     dispatch({type: 'LOGGED_IN_USER', loggedInUser: true, verifiedUser: true});
-      //   } else {
-      //     dispatch({type: 'LOGGED_IN_USER', loggedInUser: true, userID: res.userID, verifiedUser: false});
-      //   }
-      // }
+      if (res.token) {
+        dispatch(logIn(res.token))
+      }
     })
     .catch(() => {
-      alert('There was an error logging in.');
+      if (err) {
+        alert('There was an error logging in.');
+      }
     })
   };
-  // const getUser = () => {
-  //   Axios({
-  //     method: "GET",
-  //     withCredentials: true,
-  //     // url: "http://localhost:4000/user",
-  //     url: "https://fitt-af-auth-api.herokuapp.com/user",
-  //     axiosConfig,
-  //   }).then((res) => {
-  //     setData(res.data);
-  //     console.log(res.data);
-  //   });
-  // };
-  const logOut = () => {
+
+  const logUserOut = () => {
     Axios({
       method: "GET",
-      withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",
-      axiosConfig,
     }).then((res) => {
       // setData(res.data);
+      dispatch(logOut(res.token))
       console.log(res);
     });
   };
@@ -131,7 +72,7 @@ function TestAuth() {
           placeholder="password"
           onChange={(e) => setRegisterPassword(e.target.value)}
         />
-        <button onClick={register}>Submit</button>
+        {/* <button onClick={register}>Submit</button> */}
       </div>
 
       <div>
@@ -156,7 +97,7 @@ function TestAuth() {
 
       <div>
         <h1>Log out</h1>
-        <button onClick={logOut}>Submit</button>
+        <button onClick={logUserOut}>Submit</button>
       </div>
     </div>
   );

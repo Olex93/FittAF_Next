@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "../actions";
 import Router from "next/router";
 
 const LoginForm = (props) => {
@@ -10,40 +11,38 @@ const LoginForm = (props) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
+  const globalState = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
-  
-  const axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
-      withCredentials: true,
-    },
-  };
-
   const login = () => {
-    const lcUsername = loginUsername.toLocaleLowerCase()
-    axios({
-      method: "POST",
-      data: {
-        username: lcUsername,
-        password: loginPassword,
+    const data = {
+      username: loginUsername,
+      name: name,
+      password: loginPassword,
+    };
+    let json = JSON.stringify(data);
+    // fetch('https://fitt-af-auth-api.herokuapp.com/api/login', {
+      fetch('http://localhost:4000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-      withCredentials: true,
-      // url: "http://localhost:4000/api/login",
-      url: "https://fitt-af-auth-api.herokuapp.com/api/login",
-      axiosConfig
-
-    }).then((res) => {
-      if (res.data == "Successfully Authenticated") {
-        dispatch({
-          type: "LOG_IN",
-        });
-        Router.push("/");
-      } else {
-        setError(res.data);
+      body: json,
+    })
+    .then(response => response.json())
+    .then(res => {
+      console.log('Response from api login: ', res);
+      if (res.token) {
+        dispatch(logIn(res.token))
+        Router.push('/')
       }
-    });
+    })
+    .catch(() => {
+      if (err) {
+        alert('There was an error logging in.');
+      }
+    })
   };
 
 
@@ -73,10 +72,5 @@ const LoginForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-  };
-};
 
-export default connect(mapStateToProps, null)(LoginForm);
+export default LoginForm;

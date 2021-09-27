@@ -23,6 +23,8 @@ import NutritionInfo from "./dashboard/NutritionInfo";
 import ContactForm from "./ContactForm";
 import Router from 'next/router'
 import Axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {logOut} from '../actions'
 
 // const StyledAppBar = styled(AppBar)({
 
@@ -31,9 +33,13 @@ import Axios from "axios";
 const drawerWidth = 240;
 
 function MemebrDashboard(props) {
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [displayedPage, setDisplayedPage] = useState("member-zone");
+
+  const globalState = useSelector((state) => state.reducer);
+  const dispatch = useDispatch();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -52,18 +58,17 @@ function MemebrDashboard(props) {
     },
   };
 
-  const logOut = () => {
+  const logUserOut = () => {
     Axios({
       method: "GET",
-      withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",     
       axiosConfig 
     }).then((res) => {
-      // setData(res.data);
       console.log(res);
-      Router.reload('/')
+      dispatch(logOut())
     });
+
   }
 
   // Content for both drawers
@@ -170,7 +175,7 @@ function MemebrDashboard(props) {
                 marginRight: "20px",
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
-              onClick={() => logOut()}
+              onClick={() => logUserOut()}
             >
               Logout
             </Typography>
@@ -178,7 +183,7 @@ function MemebrDashboard(props) {
               sx={{
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
-              onClick={() => logOut()}
+              onClick={() => logUserOut()}
             />
           </Box>
         </Toolbar>
