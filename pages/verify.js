@@ -24,8 +24,9 @@ export default function Verify() {
       code: code,
     };
     let json = JSON.stringify(data);
-    // url: "https://fitt-af-auth-api.herokuapp.com/api/verify",
-    fetch("http://localhost:4000/api/verify", {
+
+    fetch("https://fitt-af-auth-api.herokuapp.com/api/verify", {
+    // fetch("http://localhost:4000/api/verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,8 +49,8 @@ export default function Verify() {
       password: password,
     };
     let json = JSON.stringify(data);
-    // url: "https://fitt-af-auth-api.herokuapp.com/api/first-time-password",
-    fetch("http://localhost:4000/api/first-time-password", {
+    fetch("https://fitt-af-auth-api.herokuapp.com/api/first-time-password", {
+    // fetch("http://localhost:4000/api/first-time-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

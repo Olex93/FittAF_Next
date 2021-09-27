@@ -14,8 +14,9 @@ export default function Register() {
       username: registerUsername,
     };
     let json = JSON.stringify(data);
-    // url: "https://fitt-af-auth-api.herokuapp.com/api/register-client",
-    fetch("http://localhost:4000/api/register-client", {
+
+    fetch("https://fitt-af-auth-api.herokuapp.com/api/register-client", {
+    // fetch("http://localhost:4000/api/register-client", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

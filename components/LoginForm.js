@@ -21,8 +21,8 @@ const LoginForm = (props) => {
       password: loginPassword,
     };
     let json = JSON.stringify(data);
-    // fetch('https://fitt-af-auth-api.herokuapp.com/api/login', {
-      fetch('http://localhost:4000/api/login', {
+    fetch('https://fitt-af-auth-api.herokuapp.com/api/login', {
+      // fetch('http://localhost:4000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
