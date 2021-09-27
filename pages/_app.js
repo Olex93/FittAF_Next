@@ -4,15 +4,15 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import "../scss/circles.global.scss";
 import Script from "next/script";
-import { Provider } from "react-redux";
-import { useStore } from "../store";
-import {Container} from 'next/app';
+import { PersistGate } from "redux-persist/integration/react";
+import { wrapper } from "../store";
+import { useStore } from "react-redux";
 
-function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState)
+export default wrapper.withRedux(({Component, pageProps}) => {
+  const store = useStore();
 
   return (
-    <Provider store={store}>
+    <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
       <div>
         <Head>
           <link
@@ -25,8 +25,6 @@ function MyApp({ Component, pageProps }) {
         <Navbar />
         <Component {...pageProps} />
       </div>
-    </Provider>
+    </PersistGate>
   );
-}
-
-export default MyApp;
+});
