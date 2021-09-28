@@ -100,6 +100,7 @@ padding-top:20px;
   -webkit-box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
 -moz-box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
 box-shadow: -2px 31px 29px -34px rgba(0,0,0,0.75);
+flex-wrap: nowrap;
 }
 
 /* ----------------------------------------------  Animation ----------------------------------------------*/

@@ -19,8 +19,6 @@ const Home = (props) => {
           content="Online personal training delivered by professional fitness coaches."
         />
       </Head>
-      <JsScripts />
-
       {globalState.loggedIn == "true" && <MemebrDashboard />}
       {globalState.loggedIn == "false" && <LandingPage />}
     </>

@@ -1,0 +1,37 @@
+.filterButtonList {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    display: flex;
+    
+    .filterListItem {
+      margin: 0;
+      margin-right: 10px;
+      padding: 8px 15px;
+      background-color: #b40202;
+      border: 2px solid #b40202;
+
+      &:hover, &:focus, &.active {
+        cursor: pointer;
+        background-color: white;
+        border: 2px solid #b40202;
+        transition: all 0.2s;
+
+        .filterListAnchor {
+          color: #212529;
+          transition: all 0.2s;
+
+        }
+      }
+
+      .filterListAnchor {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        color: white;
+        transition: all 0.2s;
+
+      }
+    }
+  }
+  

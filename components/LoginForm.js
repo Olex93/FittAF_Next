@@ -48,7 +48,7 @@ const LoginForm = (props) => {
 
   return (
     <div>
-      <h1>login</h1>
+      <h1>Login</h1>
       <input
         placeholder="username"
         onChange={(e) => setloginUsername(e.target.value)}

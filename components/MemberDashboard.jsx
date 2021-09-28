@@ -104,6 +104,12 @@ function MemebrDashboard(props) {
           </ListItemIcon>
           <ListItemText primary={"Get in touch"} />
         </ListItem>
+        <ListItem button onClick={() => logUserOut()}>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Log out"} />
+        </ListItem>
         {/* <ListItem button>
           <ListItemIcon>
             <PermPhoneMsgIcon />
@@ -173,6 +179,7 @@ function MemebrDashboard(props) {
               sx={{
                 fontFamily: "Poppins, sans-serif",
                 marginRight: "20px",
+                weight: '500',
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
               onClick={() => logUserOut()}
