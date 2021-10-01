@@ -5,9 +5,12 @@ import styles from "../scss/navbar.module.scss";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
+import { useSelector } from "react-redux";
 
 export default function Navbar(props) {
   const [navState, setNavState] = React.useState("hide");
+  const globalState = useSelector((state) => state.reducer);
+
 
   const toggleNav = (e) => {
     // e.preventDefault();
@@ -18,6 +21,7 @@ export default function Navbar(props) {
     }
   };
 
+  console.log(globalState)
   return (
     <>
       <div id="mySidenav" className={`${styles.sidenav} ${navState}`}>
@@ -54,7 +58,7 @@ export default function Navbar(props) {
               />
             </a>
           </Link>
-          <Link href="/login">
+          <Link href={globalState.loggedIn == 'true' ? '/' : `/login`}>
             <a className={styles.logIn}>
               Customer Portal{" "}
               <LoginIcon sx={{ marginLeft: "10px", fontWeight: 'bold' }} width={30} height={30} />

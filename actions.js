@@ -1,10 +1,12 @@
 import { LOG_IN, LOG_OUT, SET_NAME } from "./reducer";
 
-export const logIn = (jwt) => (dispatch) => {
+export const logIn = (jwt, userID) => (dispatch) => {
+  console.log(userID)
   return dispatch({
     type: "LOG_IN",
     loggedIn: "true",
-    jwt:jwt
+    jwt:jwt, 
+    userID: userID
   });
 };
 

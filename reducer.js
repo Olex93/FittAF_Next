@@ -12,7 +12,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loggedIn: action.loggedIn,
-        jwt: action.jwt
+        jwt: action.jwt,
+        userID: action.userID
       };
     case "LOG_OUT":
       return {

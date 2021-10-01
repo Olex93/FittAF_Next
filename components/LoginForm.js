@@ -3,6 +3,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { logIn } from "../actions";
 import Router from "next/router";
+import Alert from "@mui/material/Alert";
+import Link from "next/link";
 
 const LoginForm = (props) => {
   const [loginUsername, setloginUsername] = useState("");
@@ -21,30 +23,32 @@ const LoginForm = (props) => {
       password: loginPassword,
     };
     let json = JSON.stringify(data);
-    fetch('https://fitt-af-auth-api.herokuapp.com/api/login', {
+    fetch("https://fitt-af-auth-api.herokuapp.com/api/login", {
       // fetch('http://localhost:4000/api/login', {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: json,
     })
-    .then(response => response.json())
-    .then(res => {
-      console.log('Response from api login: ', res);
-      if (res.token) {
-        dispatch(logIn(res.token))
-        Router.push('/')
-      }
-    })
-    .catch(() => {
-      if (err) {
-        alert('There was an error logging in.');
-      }
-    })
+      .then((response) => response.json())
+      .then((res) => {
+        // console.log("Response from api login: ", res);
+        if (res.token) {
+          dispatch(logIn(res.token, res.userID));
+          Router.push("/");
+        }
+        if (res.error) {
+          setError(res.error);
+        }
+      })
+      .catch(() => {
+        if (err) {
+          alert("There was an error logging in.");
+        }
+      });
   };
-
 
   return (
     <div>
@@ -63,14 +67,14 @@ const LoginForm = (props) => {
       </button>
       {error && (
         <div className="mt-3">
-          <p>
-            <i>{error}.</i>
-          </p>
+          <Alert severity="error">{error}</Alert>
+          <div className="mt-4">
+            <Link href="forgotten-password"><a>Forgotten password</a></Link>
+          </div>
         </div>
       )}
     </div>
   );
 };
-
 
 export default LoginForm;
