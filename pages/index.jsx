@@ -13,19 +13,23 @@ const Home = (props) => {
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
-      withCredentials: true,
+      "Access-Control-Allow-Origin": true,
+      "Access-Control-Allow-Credentials": true,
+      "withCredentials": true,
+      exposedHeaders: ["set-cookie"],
     },
   };
 
   const getUser = () => {
+    console.log('fired')
     axios({
       method: "GET",
       withCredentials: true,
-      // url: "http://localhost:4000/user",
-      url: "https://fitt-af-auth-api.herokuapp.com/user",
+      url: "http://localhost:4000/user",
+      // url: "https://fitt-af-auth-api.herokuapp.com/user",
       axiosConfig
     }).then((res) => {
+      console.log(res)
       setData(res.data);
       console.log(res.data);
       setLoading(false);

@@ -36,6 +36,7 @@ const LoginForm = (props) => {
 
     }).then((res) => {
       if (res.data == "Successfully Authenticated") {
+        console.log(res.data)
         dispatch({
           type: "LOG_IN",
         });

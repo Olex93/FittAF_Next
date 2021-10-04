@@ -8,11 +8,11 @@ function TestAuth() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
-  
+  Axios.defaults.withCredentials = true;
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
+      "Access-Control-Allow-Origin": true,
       withCredentials: true,
     },
   };
@@ -28,7 +28,6 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/register",
       url: "https://fitt-af-auth-api.herokuapp.com/api/register",
-      axiosConfig
     }).then((res) => console.log(res));
   };
   const login = () => {
@@ -42,16 +41,19 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/login",
       url: "https://fitt-af-auth-api.herokuapp.com/api/login",
-      axiosConfig
+      // axiosConfig
     }).then((res) => console.log(res));
   };
   const getUser = () => {
     Axios({
       method: "GET",
-      withCredentials: true,
       // url: "http://localhost:4000/user",
       url: "https://fitt-af-auth-api.herokuapp.com/user",
-      axiosConfig      
+      // headers: {
+      //   crossDomain: true, 'Content-Type': 'application/json'
+      // },
+      withCredentials: true,
+      // crossDomain: true,
     }).then((res) => {
       setData(res.data);
       console.log(res.data);
@@ -63,12 +65,12 @@ function TestAuth() {
       withCredentials: true,
       // url: "http://localhost:4000/api/logout",
       url: "https://fitt-af-auth-api.herokuapp.com/api/logout",
-      axiosConfig
+      axiosConfig,
     }).then((res) => {
       // setData(res.data);
       console.log(res);
     });
-  }
+  };
   return (
     <div className="App">
       <div>
@@ -104,7 +106,6 @@ function TestAuth() {
         {data ? <h1>Welcome Back {data.username}</h1> : null}
       </div>
 
-      
       <div>
         <h1>Log out</h1>
         <button onClick={logOut}>Submit</button>
