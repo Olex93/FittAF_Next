@@ -1,0 +1,70 @@
+// .goals:last-of-type {
+//       .goalRow {
+//       border-bottom: 1px solid #1a1a1a;
+//   }
+// }
+
+
+.goalRow {
+  border: 1px solid rgba(26, 26, 26, 0.2);
+//   border-bottom: none;
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-radius: 4px;
+
+
+  .goalContent {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .goalNumber {
+      padding: 10px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #b40202;
+      min-width: 50px;
+      color: white;
+      font-weight: bold;
+      height: 100%;
+    }
+
+    .goalText {
+      padding: 0px;
+      margin: 10px;
+      display: inline-block;
+    }
+  }
+
+  .iconsContent {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+    .delete {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .edit {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  }
+}
+
+.editGoalInput {
+    width: 100%;
+    .doneIcon {
+        cursor: pointer;
+        &:hover {
+            color: black
+        }
+    }
+}

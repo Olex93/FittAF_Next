@@ -23,8 +23,8 @@ const LoginForm = (props) => {
       password: loginPassword,
     };
     let json = JSON.stringify(data);
-    fetch("https://fitt-af-auth-api.herokuapp.com/api/login", {
-      // fetch('http://localhost:4000/api/login', {
+    // fetch("https://fitt-af-auth-api.herokuapp.com/api/login", {
+      fetch('http://localhost:4000/api/login', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,15 +36,16 @@ const LoginForm = (props) => {
       .then((res) => {
         // console.log("Response from api login: ", res);
         if (res.token) {
-          dispatch(logIn(res.token, res.userID));
+          dispatch(logIn(res.token, res.userID, res.goals));
           Router.push("/");
         }
         if (res.error) {
           setError(res.error);
         }
       })
-      .catch(() => {
+      .catch((err) => {
         if (err) {
+          console.log(err)
           alert("There was an error logging in.");
         }
       });

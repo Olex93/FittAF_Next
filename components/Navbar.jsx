@@ -21,7 +21,6 @@ export default function Navbar(props) {
     }
   };
 
-  console.log(globalState)
   return (
     <>
       <div id="mySidenav" className={`${styles.sidenav} ${navState}`}>

@@ -8,8 +8,6 @@ function TestAuth() {
   const globalState = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
   
-  console.log(globalState)
-
   const [name, setName] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");

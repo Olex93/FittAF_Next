@@ -3,7 +3,8 @@ const initialState = {
   customerName: "",
   verifiedUser: false,
   userID: "",
-  jwt:null,
+  jwt: null,
+  goals: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -13,7 +14,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         loggedIn: action.loggedIn,
         jwt: action.jwt,
-        userID: action.userID
+        userID: action.userID,
+        goals: action.goals,
       };
     case "LOG_OUT":
       return {
@@ -22,14 +24,19 @@ export default function reducer(state = initialState, action) {
         customerName: action.customerName,
         verifiedUser: action.verifiedUser,
         userID: action.userID,
-        jwt:action.jwt,
+        jwt: action.jwt,
       };
     case "SET_NAME":
       return {
         ...state,
         customerName: action.payload,
       };
+    case "UPDATE_GOALS":
+      return {
+        ...state,
+        goals: action.goals,
+      };
     default:
       return state;
   }
-};
+}
