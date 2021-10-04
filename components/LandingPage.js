@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import axios from "axios";
-
-
+import JsScripts from "./JsScripts";
 
 export default function LandingPage() {
   const [name, setName] = useState("");
@@ -57,6 +56,7 @@ export default function LandingPage() {
 
   return (
     <div className={styles.container}>
+      <JsScripts />
       <div className="container-fluid hero-bg  w-100 bg-dred">
         <div className="hero container-fluid ">
           <h1 className="hero-header light">
@@ -76,7 +76,6 @@ export default function LandingPage() {
           </Link>
         </div>
       </div>
-
       <div className="flex-container">
         <div
           className="container-fluid bg-dred mobile-section curved-bottom "

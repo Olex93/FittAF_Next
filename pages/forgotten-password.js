@@ -1,22 +1,47 @@
 import React, { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function Verify() {
+export default function ForgottenPassword() {
+  const globalState = useSelector((state) => state.reducer);
   const router = useRouter();
-
+  const [emailSent, setEmailSent] = useState(false)
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [verified, setVerified] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordCreated, setPasswordCreated] = useState(false);
 
-  const axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
-    },
+  const sendCode = () => {
+    // console.log(globalState.jwt);
+    const data = {
+      username: email,
+    };
+    let json = JSON.stringify(data);
+
+    fetch("https://fitt-af-auth-api.herokuapp.com/api/forgotten-password", {
+    // fetch("http://localhost:4000/api/forgotten-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `JWT ${globalState.jwt}`,
+      },
+      body: json,
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        // console.log("Response from api login: ", res);
+        if (res.emailSent == true) {
+          setEmailSent(true)
+        }
+        if (res.error) {
+          setError(res.error);
+        }
+      });
   };
+
 
   const verifyCode = () => {
     const data = {
@@ -36,7 +61,7 @@ export default function Verify() {
     })
       .then((response) => response.json())
       .then((res) => {
-        console.log("Response from api login: ", res);
+        // console.log("Response from api login: ", res);
         if (res == "Successfully verified") {
           setVerified(true);
         }
@@ -62,7 +87,7 @@ export default function Verify() {
         return response.json();
       })
       .then((res) => {
-        console.log("Response from api login: ", res);
+        // console.log("Response from api login: ", res);
         if (res.message == "password change successful") {
           setPasswordCreated(true);
         }
@@ -71,18 +96,27 @@ export default function Verify() {
 
   return (
     <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 pt-5">
-      {!verified && !passwordCreated && (
+      {!emailSent && !verified && !passwordCreated && (
         <div>
-          <h1>Let&apos;s get you set up</h1>
+          <h1>Forgotten Password</h1>
           <p>
-            First of all, please enter your email address as well as your one
-            time password so that we can verify you&apos;re a genuine Fitt AF
-            customer.
+            No problem. Enter your email address below and we&apos;ll send you a one time password
           </p>
           <input
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
+          <button className="btn grow light formBtn" onClick={sendCode}>
+            Submit
+          </button>
+        </div>
+      )}
+      { !verified && !passwordCreated && emailSent && (
+        <div>
+          <h1>Enter your verification code</h1>
+          <p>
+            A verification code has been sent to your email address: {email}. Enter the code below to reset your password.
+          </p>
           <input
             placeholder="One time password"
             onChange={(e) => setCode(e.target.value)}

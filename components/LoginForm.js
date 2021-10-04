@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "../actions";
 import Router from "next/router";
+import Alert from "@mui/material/Alert";
+import Link from "next/link";
 
 const LoginForm = (props) => {
   const [loginUsername, setloginUsername] = useState("");
@@ -10,47 +13,47 @@ const LoginForm = (props) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
+  const globalState = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
-  
-  const axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "https://task-share-api.herokuapp.com",
-      withCredentials: true,
-    },
-  };
-
   const login = () => {
-    const lcUsername = loginUsername.toLocaleLowerCase()
-    axios({
+    const data = {
+      username: loginUsername,
+      name: name,
+      password: loginPassword,
+    };
+    let json = JSON.stringify(data);
+    // fetch("https://fitt-af-auth-api.herokuapp.com/api/login", {
+      fetch('http://localhost:4000/api/login', {
       method: "POST",
-      data: {
-        username: lcUsername,
-        password: loginPassword,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      withCredentials: true,
-      // url: "http://localhost:4000/api/login",
-      url: "https://fitt-af-auth-api.herokuapp.com/api/login",
-      axiosConfig
-
-    }).then((res) => {
-      if (res.data == "Successfully Authenticated") {
-        console.log(res.data)
-        dispatch({
-          type: "LOG_IN",
-        });
-        Router.push("/");
-      } else {
-        setError(res.data);
-      }
-    });
+      body: json,
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        // console.log("Response from api login: ", res);
+        if (res.token) {
+          dispatch(logIn(res.token, res.userID, res.goals));
+          Router.push("/");
+        }
+        if (res.error) {
+          setError(res.error);
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err)
+          alert("There was an error logging in.");
+        }
+      });
   };
-
 
   return (
     <div>
-      <h1>login</h1>
+      <h1>Login</h1>
       <input
         placeholder="username"
         onChange={(e) => setloginUsername(e.target.value)}
@@ -65,19 +68,14 @@ const LoginForm = (props) => {
       </button>
       {error && (
         <div className="mt-3">
-          <p>
-            <i>{error}.</i>
-          </p>
+          <Alert severity="error">{error}</Alert>
+          <div className="mt-4">
+            <Link href="forgotten-password"><a>Forgotten password</a></Link>
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-  };
-};
-
-export default connect(mapStateToProps, null)(LoginForm);
+export default LoginForm;

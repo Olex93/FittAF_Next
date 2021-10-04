@@ -21,8 +21,13 @@ import MemberZone from "./dashboard/MemberZone";
 import WorkoutVideoLibrary from "./dashboard/WorkoutVideoLibrary";
 import NutritionInfo from "./dashboard/NutritionInfo";
 import ContactForm from "./ContactForm";
-import Router from 'next/router'
+import Router from "next/router";
 import Axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../actions";
+import UserManagement from "./dashboard/UserManagement";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 // const StyledAppBar = styled(AppBar)({
 
@@ -35,15 +40,17 @@ function MemebrDashboard(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [displayedPage, setDisplayedPage] = useState("member-zone");
 
+  const globalState = useSelector((state) => state.reducer);
+  const dispatch = useDispatch();
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const routePage = (route) => {
-    setDisplayedPage(route)
-  }
+    setDisplayedPage(route);
+  };
 
-  
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
@@ -52,19 +59,17 @@ function MemebrDashboard(props) {
     },
   };
 
-  const logOut = () => {
+  const logUserOut = () => {
     Axios({
       method: "GET",
-      withCredentials: true,
       // url: "http://localhost:4000/api/logout",
-      url: "https://fitt-af-auth-api.herokuapp.com/api/logout",     
-      axiosConfig 
+      url: "https://fitt-af-auth-api.herokuapp.com/api/logout",
+      axiosConfig,
     }).then((res) => {
-      // setData(res.data);
       console.log(res);
-      Router.reload('/')
+      dispatch(logOut());
     });
-  }
+  };
 
   // Content for both drawers
   const drawer = (
@@ -72,19 +77,19 @@ function MemebrDashboard(props) {
       <Toolbar />
       <Divider sx={{ height: "15px", margin: 0, padding: 0 }} />
       <List>
-        <ListItem button onClick={() => routePage('member-zone')}>
+        <ListItem button onClick={() => routePage("member-zone")}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary={"Member Zone"} />
         </ListItem>
-        <ListItem button onClick={() => routePage('exercise-demo')}>
+        <ListItem button onClick={() => routePage("exercise-demo")}>
           <ListItemIcon>
             <FitnessCenterIcon />
           </ListItemIcon>
           <ListItemText primary={"Excercise Demos"} />
         </ListItem>
-        <ListItem button onClick={() => routePage('nutrition-info')}>
+        <ListItem button onClick={() => routePage("nutrition-info")}>
           <ListItemIcon>
             <KitchenIcon />
           </ListItemIcon>
@@ -93,11 +98,34 @@ function MemebrDashboard(props) {
       </List>
       <Divider />
       <List>
-        <ListItem button onClick={() => routePage('contact')}>
+        {globalState.userID == "6153485de4808000161a2511" && (
+          <ListItem button onClick={() => routePage("manage-users")}>
+            <ListItemIcon>
+              <AccountBoxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Manage Users"} />
+          </ListItem>
+        )}
+        {globalState.userID == "6153485de4808000161a2511" && (
+          <ListItem button onClick={() => Router.push("/register-client")}>
+            <ListItemIcon>
+              <GroupAddIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Add Users"} />
+          </ListItem>
+        )}
+
+        <ListItem button onClick={() => routePage("contact")}>
           <ListItemIcon>
             <PermPhoneMsgIcon />
           </ListItemIcon>
           <ListItemText primary={"Get in touch"} />
+        </ListItem>
+        <ListItem button onClick={() => logUserOut()}>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Log out"} />
         </ListItem>
         {/* <ListItem button>
           <ListItemIcon>
@@ -168,9 +196,10 @@ function MemebrDashboard(props) {
               sx={{
                 fontFamily: "Poppins, sans-serif",
                 marginRight: "20px",
+                weight: "500",
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
-              onClick={() => logOut()}
+              onClick={() => logUserOut()}
             >
               Logout
             </Typography>
@@ -178,7 +207,7 @@ function MemebrDashboard(props) {
               sx={{
                 "&:hover": { transform: "scale(1.2)", transition: "all 0.2s" },
               }}
-              onClick={() => logOut()}
+              onClick={() => logUserOut()}
             />
           </Box>
         </Toolbar>
@@ -228,13 +257,16 @@ function MemebrDashboard(props) {
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {/* <h1 className="signupHeading">Welcome to the Fitt AF Member Zone</h1> */}
-        {displayedPage === "member-zone" && <MemberZone />}
+        {displayedPage === "member-zone" && (
+          <MemberZone
+            displayedPage={displayedPage}
+            setDisplayedPage={setDisplayedPage}
+          />
+        )}
         {displayedPage === "exercise-demo" && <WorkoutVideoLibrary />}
         {displayedPage === "nutrition-info" && <NutritionInfo />}
         {displayedPage === "contact" && <ContactForm />}
-
-
-        {/* <WorkoutVideoLibrary /> */}
+        {displayedPage === "manage-users" && <UserManagement />}
       </Box>
     </Box>
   );

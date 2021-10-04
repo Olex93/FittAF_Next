@@ -3,9 +3,14 @@ import Link from "next/link";
 import React from "react";
 import styles from "../scss/navbar.module.scss";
 import Image from "next/image";
+import MenuIcon from "@mui/icons-material/Menu";
+import LoginIcon from "@mui/icons-material/Login";
+import { useSelector } from "react-redux";
 
 export default function Navbar(props) {
   const [navState, setNavState] = React.useState("hide");
+  const globalState = useSelector((state) => state.reducer);
+
 
   const toggleNav = (e) => {
     // e.preventDefault();
@@ -40,26 +45,31 @@ export default function Navbar(props) {
       </div>
 
       <nav className="navbar bg-dred bottom-shadow">
-        <Link href="/">
-          <a className="navbar-brand">
-            <Image
-              src="/images/FittAF_logo_white.png"
-              className="logoImg"
-              alt="FittAF Logo."
-              width={60}
-              height={60}
-            />
+        <div className={styles.leftMenu}>
+          <Link href="/">
+            <a className="navbar-brand">
+              <Image
+                src="/images/FittAF_logo_white.png"
+                className="logoImg"
+                alt="FittAF Logo."
+                width={60}
+                height={60}
+              />
+            </a>
+          </Link>
+          <Link href={globalState.loggedIn == 'true' ? '/' : `/login`}>
+            <a className={styles.logIn}>
+              Customer Portal{" "}
+              <LoginIcon sx={{ marginLeft: "10px", fontWeight: 'bold' }} width={30} height={30} />
+            </a>
+          </Link>
+        </div>
+
+        <div className={styles.rightMenu}>
+          <a className={styles.hamburger} onClick={toggleNav}>
+            Menu <MenuIcon sx={{ marginLeft: "10px", fontWeight: 'bold' }} width={30} height={30} />
           </a>
-        </Link>
-        <button className="grow hamburger transparent" onClick={toggleNav}>
-          <Image
-            src="/images/hamburger.png"
-            className="hamburger"
-            alt="Hamburger menu icon."
-            width={30}
-            height={30}
-          />
-        </button>
+        </div>
       </nav>
     </>
   );

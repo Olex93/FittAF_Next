@@ -1,0 +1,27 @@
+.userHeadingRow {
+  background-color: #b40202;
+  padding: 10px;
+  margin: 10px 0; 
+  padding-left: 60px;
+  position: relative;
+  border:  1px solid rgba(26, 26, 26, 0.2);
+
+  .userIndex {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .userHeading {
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+}

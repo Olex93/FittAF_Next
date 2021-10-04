@@ -2,43 +2,13 @@ import React, { useEffect, useState } from "react";
 import JsScripts from "../components/JsScripts";
 import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
-import axios from "axios";
 import Head from "next/head";
 import MemebrDashboard from "../components/MemberDashboard";
+import { useSelector } from "react-redux";
 
 const Home = (props) => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
 
-  const axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": true,
-      "Access-Control-Allow-Credentials": true,
-      "withCredentials": true,
-      exposedHeaders: ["set-cookie"],
-    },
-  };
-
-  const getUser = () => {
-    console.log('fired')
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/user",
-      // url: "https://fitt-af-auth-api.herokuapp.com/user",
-      axiosConfig
-    }).then((res) => {
-      console.log(res)
-      setData(res.data);
-      console.log(res.data);
-      setLoading(false);
-    });
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
+  const globalState = useSelector((state) => state.reducer);
 
   return (
     <>
@@ -49,13 +19,8 @@ const Home = (props) => {
           content="Online personal training delivered by professional fitness coaches."
         />
       </Head>
-      <JsScripts />
-      {!loading && (
-        <>
-          {data && <MemebrDashboard />}
-          {!data && <LandingPage />}
-        </>
-      )}
+      {globalState.loggedIn == "true" && <MemebrDashboard />}
+      {globalState.loggedIn == "false" && <LandingPage />}
     </>
   );
 };
