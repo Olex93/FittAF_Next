@@ -39,6 +39,9 @@ export default function Navbar(props) {
         <Link href="/member-transformations">
           <a onClick={toggleNav}>Member Transformations</a>
         </Link>
+        <Link href="/login">
+          <a onClick={toggleNav}>Customer Portal</a>
+        </Link>
         <Link href="/contact">
           <a onClick={toggleNav}>Contact Us</a>
         </Link>
@@ -57,12 +60,12 @@ export default function Navbar(props) {
               />
             </a>
           </Link>
-          <Link href={globalState.loggedIn == 'true' ? '/' : `/login`}>
+          {/* <Link href={globalState.loggedIn == 'true' ? '/' : `/login`}>
             <a className={styles.logIn}>
               Customer Portal{" "}
               <LoginIcon sx={{ marginLeft: "10px", fontWeight: 'bold' }} width={30} height={30} />
             </a>
-          </Link>
+          </Link> */}
         </div>
 
         <div className={styles.rightMenu}>

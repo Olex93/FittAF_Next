@@ -23,9 +23,10 @@ const UserManagement = () => {
     setEditingMode(index);
   };
 
-  const startEditingText = (index, userID) => {
+  const startEditingText = (index, userID, goal) => {
+    console.log(goal)
     setSelectedUser(userID)
-    setOldGoalText(globalState.goals[index]);
+    setOldGoalText(goal);
     toggleEditing(index);
   };
 
@@ -167,7 +168,7 @@ const UserManagement = () => {
                             <div className={otherStyles.iconsContent}>
                               <span className={otherStyles.edit}>
                                 <EditIcon
-                                  onClick={() => startEditingText(index, user.userID)}
+                                  onClick={() => startEditingText(index, user.userID, goal)}
                                 />
                               </span>
                               <span className={otherStyles.delete}>
