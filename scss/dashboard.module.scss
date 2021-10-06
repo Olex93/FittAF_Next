@@ -4,10 +4,9 @@
 //   }
 // }
 
-
 .goalRow {
   border: 1px solid rgba(26, 26, 26, 0.2);
-//   border-bottom: none;
+  //   border-bottom: none;
   background-color: white;
   position: relative;
   display: flex;
@@ -16,6 +15,9 @@
   margin-bottom: 10px;
   border-radius: 4px;
 
+  &.secondaryRow {
+    margin-left: 25px;
+  }
 
   .goalContent {
     display: flex;
@@ -27,7 +29,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #b40202;
+      background-color: #291528;
       min-width: 50px;
       color: white;
       font-weight: bold;
@@ -42,10 +44,10 @@
   }
 
   .iconsContent {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 
     .delete {
       cursor: pointer;
@@ -60,11 +62,11 @@
 }
 
 .editGoalInput {
-    width: 100%;
-    .doneIcon {
-        cursor: pointer;
-        &:hover {
-            color: black
-        }
+  width: 100%;
+  .doneIcon {
+    cursor: pointer;
+    &:hover {
+      color: black;
     }
+  }
 }

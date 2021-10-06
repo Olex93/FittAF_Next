@@ -16,6 +16,7 @@ function MemberZone(props) {
   const [editingMode, setEditingMode] = useState(null);
   const [newGoalText, setNewGoalText] = useState("");
   const [oldGoalText, setOldGoalText] = useState("");
+  const [addGoalText, setAddGoalText] = useState("");
 
   const toggleEditing = (index) => {
     setEditingMode(index);
@@ -50,7 +51,7 @@ function MemberZone(props) {
           console.log("Response from api login: ", res);
           if ((res.success = true)) {
             console.log("success");
-            let goals = res.newGoals
+            let goals = res.newGoals;
             dispatch(updateGoals(goals));
           }
           if (res.error) {
@@ -63,7 +64,7 @@ function MemberZone(props) {
           }
         });
     }
-    setNewGoalText("")
+    setNewGoalText("");
     toggleEditing(null);
   };
 
@@ -115,7 +116,7 @@ function MemberZone(props) {
         console.log("Response from api login: ", res);
         if ((res.success = true)) {
           console.log("success");
-          dispatch(updateGoals(res.goals));
+          dispatch(updateGoals(res.newGoals));
           //   Router.push("/");
         }
         if (res.error) {
@@ -128,6 +129,43 @@ function MemberZone(props) {
           //   alert("There was an error logging in.");
         }
       });
+  };
+
+  const addNewGoal = () => {
+    if (addGoalText !== "") {
+      const data = {
+        userID: globalState.userID,
+        goal: addGoalText,
+      };
+      let json = JSON.stringify(data);
+      // fetch("https://fitt-af-auth-api.herokuapp.com/api/add-goal", {
+      fetch("http://localhost:4000/api/add-goal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `JWT ${globalState.jwt}`,
+        },
+        body: json,
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          console.log("Response from api login: ", res);
+          if ((res.success = true)) {
+            console.log("success");
+            dispatch(updateGoals(res.goals));
+          }
+          if (res.error) {
+            setError(res.error);
+          }
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      setAddGoalText("");
+    }
   };
 
   return (
@@ -146,50 +184,101 @@ function MemberZone(props) {
           <h2 className="mb-4">
             <strong>Your personal goals</strong>
           </h2>
-          <div className="row">
-            {globalState.goals.map((goal, index) => (
-              <div className={`col-12 ${styles.goals}`} key={index}>
-                {editingMode !== index && (
-                  <div className={styles.goalRow}>
-                    <div className={styles.goalContent}>
-                      <div className={styles.goalNumber}>{index + 1}</div>
-                      <div>
-                        <p className={styles.goalText}>{goal}</p>
-                      </div>
+          {globalState.goals !== undefined && (
+            <>
+              {globalState.goals.length > 0 && (
+                <div className="row">
+                  {globalState.goals.map((goal, index) => (
+                    <div className={`col-12 ${styles.goals}`} key={index}>
+                      {editingMode !== index && (
+                        <div className={styles.goalRow}>
+                          <div className={styles.goalContent}>
+                            <div className={styles.goalNumber}>{index + 1}</div>
+                            <div>
+                              <p className={styles.goalText}>{goal}</p>
+                            </div>
+                          </div>
+                          <div className={styles.iconsContent}>
+                            <span className={styles.edit}>
+                              <EditIcon
+                                onClick={() => startEditingText(index)}
+                              />
+                            </span>
+                            <span className={styles.delete}>
+                              <DeleteIcon onClick={() => deleteGoal(goal)} />
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {editingMode == index && (
+                        <TextField
+                          id="outlined-basic"
+                          label={goal}
+                          value={newGoalText}
+                          onChange={(e) => setNewGoalText(e.target.value)}
+                          variant="filled"
+                          sx={{
+                            backgroundColor: "white",
+                            borderBottom: "none",
+                            borderRadius: 0,
+                            marginBottom: "10px",
+                          }}
+                          className={styles.editGoalInput}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <DoneIcon
+                                  className={styles.doneIcon}
+                                  onClick={() => saveEditedText(index)}
+                                />
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                      )}
                     </div>
-                    <div className={styles.iconsContent}>
-                      <span className={styles.edit}>
-                        <EditIcon onClick={() => startEditingText(index)} />
-                      </span>
-                      <span className={styles.delete}>
-                        <DeleteIcon onClick={() => deleteGoal(goal)} />
-                      </span>
-                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+          {globalState.goals !== undefined && (
+            <>
+              {globalState.goals.length == 0 && (
+                <div className="row">
+                  <div className="col-12">
+                    <p>
+                      You haven&apos;t set any goals yet. Both you and the Fitt
+                      AF team can set and edit your personal goals.
+                    </p>
+                    <p>Add a few goals below to get started.</p>
                   </div>
-                )}
-                {editingMode == index && (
-                  <TextField
-                    id="outlined-basic"
-                    label={goal}
-                    value={newGoalText}
-                    onChange={(e) => setNewGoalText(e.target.value)}
-                    variant="filled"
-                    sx={{backgroundColor: 'white', borderBottom: 'none', borderRadius: 0, marginBottom: '10px'}}
-                    className={styles.editGoalInput}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <DoneIcon
-                            className={styles.doneIcon}
-                            onClick={() => saveEditedText(index)}
-                          />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                )}
-              </div>
-            ))}
+                </div>
+              )}
+            </>
+          )}
+
+          <div className="row">
+            <div className="col-12">
+              <TextField
+                id="filled-basic"
+                label="Enter a new goal here"
+                variant="filled"
+                multiline
+                value={addGoalText}
+                onChange={(e) => setAddGoalText(e.target.value)}
+                className="mt-3"
+                sx={{ display: "block" }}
+              />
+              <button
+                className=" btn grow light"
+                type="button"
+                name="button"
+                onClick={() => addNewGoal()}
+              >
+                Add Goal
+              </button>
+            </div>
           </div>
         </div>
       </div>
