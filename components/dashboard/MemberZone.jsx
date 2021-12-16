@@ -274,6 +274,7 @@ function MemberZone(props) {
                 className=" btn grow light"
                 type="button"
                 name="button"
+                onKeyDown={() => addNewGoal()}
                 onClick={() => addNewGoal()}
               >
                 Add Goal

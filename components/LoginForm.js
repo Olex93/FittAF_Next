@@ -63,7 +63,7 @@ const LoginForm = (props) => {
         type="password"
         onChange={(e) => setloginPassword(e.target.value)}
       />
-      <button className="btn grow light formBtn" onClick={login}>
+      <button className="btn grow light formBtn" onKeyDown={login}  onClick={login}>
         Submit
       </button>
       {error && (

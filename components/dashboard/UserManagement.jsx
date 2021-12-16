@@ -125,6 +125,8 @@ const UserManagement = () => {
       .then((res) => {
         // console.log("Response from api login: ", res);
         if ((res.success = true)) {
+          // Use this logic if we are building out the mui table component.
+          // It will break the editing process though as this uses th userID field currently, so userID will need changing to id to fix this
           // const processedUsers = res.protectedUsers.map(({
           //     userID: id,
           //     ...rest
@@ -220,7 +222,9 @@ const UserManagement = () => {
                         key={index}
                       >
                         {selectedUser !== user.userID && (
-                          <div className={`${otherStyles.goalRow} ${otherStyles.secondaryRow}`}>
+                          <div
+                            className={`${otherStyles.goalRow} ${otherStyles.secondaryRow}`}
+                          >
                             <div className={otherStyles.goalContent}>
                               <div className={otherStyles.goalNumber}>
                                 {index + 1}
@@ -275,7 +279,7 @@ const UserManagement = () => {
                     ))}
                   </div>
                   {user.userID == addGoalUserID && (
-                    <div className="newGoalRow row">
+                    <div className="newGoalRow row" style={{marginLeft: '15px'}}>
                       <div className="col-12">
                         <TextField
                           id="filled-basic"
@@ -285,8 +289,7 @@ const UserManagement = () => {
                           multiline
                           value={addGoalText}
                           onChange={(e) => setAddGoalText(e.target.value)}
-                          className="mb-4"
-                          sx={{ marginLeft: "25px", width: "80%" }}
+                          sx={{ width: "80%" }}
                         />
                         <button
                           style={{
@@ -297,7 +300,9 @@ const UserManagement = () => {
                             padding: "0 15px",
                             fontWeight: 500,
                             borderRadius: "0 5px 5px 0",
+                            marginTop: 0,
                           }}
+                          className="mb-4"
                           type="button"
                           name="button"
                           onClick={() => addNewGoal(user.userID)}
